@@ -3,575 +3,437 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Restaurante — carta, reservas y pedidos.">
-<meta name="theme-color" content="#0F1724">
-<title>Nombre del Restaurante — Cocina de autor</title>
+<meta name="description" content="Olmic Web — Plantillas web profesionales listas para publicar. Diseño premium, sin programar, entrega inmediata.">
+<meta name="theme-color" content="#08060F">
+<meta property="og:title" content="Olmic Web — Plantillas web que se ven caras">
+<meta property="og:description" content="Plantillas web profesionales listas para publicar. Descarga, personaliza y publica el mismo día.">
+<meta property="og:type" content="website">
+<title>Olmic Web — Plantillas web profesionales</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,700&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Chivo:wght@400;600;700;900&family=Sora:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{
-  --night:#0F1724;
-  --night-2:#161F2E;
-  --bone:#F5F0E8;
-  --sand:#E3D8C6;
-  --clay:#A9603F;
-  --brass:#D9A441;
-  --dim:#9AA3B0;
-  --line:rgba(245,240,232,.14);
-  --serif:"Fraunces",Georgia,serif;
-  --sans:"Jost","Helvetica Neue",Arial,sans-serif;
+  --void:#08060F;
+  --ink:#0E0B1B;
+  --ember:#FF6A1F;
+  --volt:#7C5CFF;
+  --mint:#2BF5C0;
+  --bone:#EDEAF5;
+  --dim:#9790B5;
+  --edge:rgba(255,255,255,.12);
+  --pane:rgba(255,255,255,.05);
+  --display:"Chivo",Impact,sans-serif;
+  --text:"Sora","Helvetica Neue",Arial,sans-serif;
+  --r:20px;
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{background:var(--night);color:var(--bone);font-family:var(--sans);font-size:16.5px;line-height:1.65;overflow-x:hidden}
+body{background:var(--void);color:var(--bone);font-family:var(--text);font-size:16.5px;line-height:1.62;overflow-x:hidden}
 a{color:inherit;text-decoration:none}
-img{max-width:100%;display:block}
-.wrap{width:min(1160px,91vw);margin:0 auto}
-h1,h2,h3{font-family:var(--serif);font-weight:300;letter-spacing:-.02em;line-height:1.04}
+.wrap{width:min(1180px,91vw);margin:0 auto}
+h1,h2,h3{font-family:var(--display);letter-spacing:-.035em;line-height:.98}
 
-/* ---------- nav ---------- */
-.nav{position:fixed;top:0;left:0;right:0;z-index:70;display:flex;align-items:center;justify-content:space-between;
-  padding:18px min(4vw,36px);transition:background .5s,padding .5s,border-color .5s;border-bottom:1px solid transparent}
-.nav.stuck{background:rgba(15,23,36,.9);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom-color:var(--line);padding-block:12px}
-.logo{font-family:var(--serif);font-size:1.32rem;font-weight:500;letter-spacing:-.01em}
-.logo em{font-style:italic;color:var(--brass)}
-.links{display:flex;gap:30px;font-size:.92rem;font-weight:400;color:var(--sand)}
-.links a{position:relative;padding:4px 0}
-.links a::after{content:"";position:absolute;left:0;bottom:0;height:1px;width:0;background:var(--brass);transition:width .4s cubic-bezier(.2,1,.3,1)}
-.links a:hover::after{width:100%}
-.nav-side{display:flex;align-items:center;gap:14px}
-.cart-btn{position:relative;background:none;border:1px solid var(--line);color:var(--bone);font-family:inherit;font-size:.9rem;
-  padding:10px 18px;border-radius:999px;cursor:pointer;transition:border-color .3s,background .3s}
-.cart-btn:hover{border-color:var(--brass);background:rgba(217,164,65,.1)}
-.cart-btn b{position:absolute;top:-7px;right:-7px;width:21px;height:21px;border-radius:50%;background:var(--clay);
-  font-size:.72rem;display:grid;place-items:center;font-family:var(--sans);font-weight:600;transform:scale(0);transition:transform .35s cubic-bezier(.2,1.5,.4,1)}
-.cart-btn b.show{transform:scale(1)}
-.burger{display:none;background:none;border:0;color:var(--bone);font-size:1.4rem;cursor:pointer}
+/* ============ fondo vivo ============ */
+#sky{position:fixed;inset:0;z-index:-2;pointer-events:none}
+.veil{position:fixed;inset:0;z-index:-1;pointer-events:none;
+  background:radial-gradient(120% 80% at 50% 0%,transparent 40%,var(--void) 96%)}
 
-/* ---------- hero ---------- */
-.hero{position:relative;min-height:100svh;display:grid;place-items:center;text-align:center;overflow:hidden;isolation:isolate}
-.hero-bg{position:absolute;inset:-10% -4%;z-index:-3;will-change:transform;
-  background:
-    radial-gradient(52% 48% at 22% 28%,rgba(169,96,63,.42),transparent 70%),
-    radial-gradient(46% 44% at 80% 68%,rgba(217,164,65,.24),transparent 72%),
-    linear-gradient(170deg,var(--night-2),var(--night) 72%)}
-.grain{position:absolute;inset:0;z-index:-2;opacity:.5;pointer-events:none;
-  background-image:radial-gradient(rgba(245,240,232,.16) .5px,transparent .5px);background-size:3px 3px}
-.steam{position:absolute;inset:0;z-index:-2;pointer-events:none;overflow:hidden}
-.steam i{position:absolute;bottom:-18%;width:min(34vw,380px);aspect-ratio:1;border-radius:50%;filter:blur(58px);
-  background:rgba(245,240,232,.07);animation:rise-s linear infinite}
-.steam i:nth-child(1){left:8%;animation-duration:19s}
-.steam i:nth-child(2){left:44%;animation-duration:25s;animation-delay:-8s;background:rgba(217,164,65,.07)}
-.steam i:nth-child(3){left:74%;animation-duration:22s;animation-delay:-14s}
-@keyframes rise-s{0%{transform:translateY(0) scale(.7);opacity:0}18%{opacity:.85}100%{transform:translateY(-135vh) scale(1.5);opacity:0}}
+/* ============ nav ============ */
+.nav{position:fixed;top:0;left:0;right:0;z-index:60;display:flex;align-items:center;justify-content:space-between;
+  padding:15px min(4vw,34px);transition:background .45s,border-color .45s,padding .45s;
+  border-bottom:1px solid transparent}
+.nav.stuck{background:rgba(8,6,15,.8);backdrop-filter:blur(20px) saturate(170%);-webkit-backdrop-filter:blur(20px) saturate(170%);border-bottom-color:var(--edge);padding-block:11px}
+.logo{display:flex;align-items:center;gap:11px;font-family:var(--display);font-weight:900;font-size:1.2rem;letter-spacing:-.04em}
+.mark{width:30px;height:30px;border-radius:9px;position:relative;overflow:hidden;
+  background:conic-gradient(from 210deg,var(--ember),var(--volt),var(--mint),var(--ember));
+  box-shadow:0 0 22px -4px var(--volt)}
+.mark::after{content:"";position:absolute;inset:6px;border-radius:4px;background:var(--void)}
+.links{display:flex;gap:28px;font-size:.93rem;color:var(--dim)}
+.links a{transition:color .25s}
+.links a:hover{color:var(--bone)}
+.nav-btn{font-size:.9rem;font-weight:600;padding:10px 21px;border-radius:12px;
+  background:linear-gradient(120deg,var(--ember),#FF3D8B);color:#fff;
+  box-shadow:0 10px 30px -14px var(--ember);transition:transform .3s cubic-bezier(.2,1,.3,1),box-shadow .3s}
+.nav-btn:hover{transform:translateY(-2px);box-shadow:0 18px 38px -14px var(--ember)}
+.burger{display:none;background:none;border:0;color:var(--bone);font-size:1.5rem;cursor:pointer;line-height:1}
 
-.plate{position:absolute;top:50%;left:50%;width:min(62vmin,620px);aspect-ratio:1;z-index:-1;
-  transform:translate(-50%,-50%);will-change:transform;
-  border-radius:50%;
-  background:
-    radial-gradient(circle at 38% 34%,rgba(245,240,232,.10),transparent 58%),
-    conic-gradient(from 20deg,rgba(169,96,63,.30),rgba(217,164,65,.22),rgba(245,240,232,.06),rgba(169,96,63,.30));
-  box-shadow:inset 0 0 0 1px rgba(245,240,232,.13), inset 0 0 90px rgba(0,0,0,.6);
-  animation:spin 46s linear infinite}
-.plate::after{content:"";position:absolute;inset:17%;border-radius:50%;border:1px solid rgba(245,240,232,.10)}
-@keyframes spin{to{transform:translate(-50%,-50%) rotate(360deg)}}
-
-.hero-inner{position:relative;z-index:2;padding:130px 0 110px}
-.over{font-size:.82rem;letter-spacing:.34em;color:var(--brass);margin-bottom:26px;
-  opacity:0;animation:fade 1s .2s forwards}
-h1{font-size:clamp(3rem,9vw,7rem)}
-h1 .l{display:block;overflow:hidden}
-h1 .l > span{display:block;transform:translateY(108%);animation:up 1.15s cubic-bezier(.19,1,.3,1) forwards}
-h1 .l:nth-child(2) > span{animation-delay:.12s}
-h1 em{font-style:italic;color:var(--brass)}
-@keyframes up{to{transform:none}}
+/* ============ hero ============ */
+.hero{position:relative;min-height:100svh;display:grid;place-items:center;padding:150px 0 140px;perspective:1400px}
+.hero-inner{text-align:center;position:relative;z-index:2}
+.tagline{display:inline-flex;align-items:center;gap:10px;font-size:.85rem;color:var(--mint);
+  padding:8px 17px;border-radius:999px;border:1px solid rgba(43,245,192,.3);background:rgba(43,245,192,.07);margin-bottom:30px}
+.tagline i{width:6px;height:6px;border-radius:50%;background:var(--mint);box-shadow:0 0 10px var(--mint);animation:pulse 2.4s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+h1{font-size:clamp(3rem,10.5vw,8.2rem);font-weight:900;text-transform:uppercase}
+.line{display:block;overflow:hidden}
+.line > span{display:block;transform:translateY(105%);animation:rise 1.05s cubic-bezier(.2,1,.3,1) forwards}
+.line:nth-child(2) > span{animation-delay:.1s}
+.line:nth-child(3) > span{animation-delay:.2s}
+@keyframes rise{to{transform:none}}
+.grad{background:linear-gradient(100deg,var(--ember),#FF3D8B 38%,var(--volt) 72%,var(--mint));
+  -webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{font-size:1.14rem;color:var(--dim);max-width:52ch;margin:26px auto 38px;
+  opacity:0;animation:fade .9s .55s ease forwards}
 @keyframes fade{to{opacity:1}}
-.hero p{margin:28px auto 36px;max-width:46ch;color:var(--sand);font-weight:300;font-size:1.1rem;opacity:0;animation:fade 1s .7s forwards}
-.hero-cta{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;opacity:0;animation:fade 1s .85s forwards}
+.hero-cta{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;opacity:0;animation:fade .9s .7s ease forwards}
+.btn{display:inline-block;font-weight:600;padding:16px 32px;border-radius:15px;font-size:1rem;cursor:pointer;border:0;font-family:inherit;
+  transition:transform .32s cubic-bezier(.2,1,.3,1),box-shadow .32s,background .32s}
+.btn-solid{background:linear-gradient(120deg,var(--ember),#FF3D8B);color:#fff;box-shadow:0 18px 44px -20px var(--ember)}
+.btn-solid:hover{transform:translateY(-3px);box-shadow:0 26px 52px -20px var(--ember)}
+.btn-line{border:1px solid var(--edge);background:var(--pane);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);color:var(--bone)}
+.btn-line:hover{transform:translateY(-3px);background:rgba(255,255,255,.1)}
 
-.btn{display:inline-block;font-family:var(--sans);font-size:.95rem;font-weight:500;cursor:pointer;border:0;
-  padding:15px 32px;border-radius:2px;letter-spacing:.06em;
-  transition:transform .35s cubic-bezier(.2,1,.3,1),background .35s,color .35s,box-shadow .35s}
-.btn-fill{background:var(--brass);color:#1A1207;box-shadow:0 14px 34px -18px var(--brass)}
-.btn-fill:hover{transform:translateY(-3px);box-shadow:0 22px 44px -18px var(--brass)}
-.btn-out{border:1px solid var(--line);color:var(--bone)}
-.btn-out:hover{transform:translateY(-3px);border-color:var(--brass);background:rgba(217,164,65,.1)}
+/* capas parallax del hero */
+.orb{position:absolute;border-radius:50%;filter:blur(70px);z-index:0;will-change:transform}
+.orb-a{width:min(46vw,520px);aspect-ratio:1;background:rgba(255,106,31,.42);top:4%;left:-6%}
+.orb-b{width:min(40vw,460px);aspect-ratio:1;background:rgba(124,92,255,.40);bottom:2%;right:-6%}
+.orb-c{width:min(30vw,340px);aspect-ratio:1;background:rgba(43,245,192,.22);top:44%;left:56%}
+.mesh{position:absolute;inset:0;z-index:0;will-change:transform;
+  background-image:linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px);
+  background-size:64px 64px;
+  -webkit-mask-image:radial-gradient(60% 55% at 50% 45%,#000 10%,transparent 82%);
+  mask-image:radial-gradient(60% 55% at 50% 45%,#000 10%,transparent 82%)}
 
-/* ---------- cinta ---------- */
-.ribbon{border-block:1px solid var(--line);padding:19px 0;overflow:hidden;background:var(--night-2)}
-.track{display:flex;gap:56px;width:max-content;animation:slide 34s linear infinite}
-.track span{font-family:var(--serif);font-style:italic;font-size:1.18rem;color:var(--sand);white-space:nowrap;display:flex;align-items:center;gap:56px}
-.track span::after{content:"◆";color:var(--brass);font-size:.6rem;font-style:normal}
-@keyframes slide{to{transform:translateX(-50%)}}
+.scroll-hint{position:absolute;bottom:34px;left:50%;transform:translateX(-50%);z-index:2;
+  font-size:.78rem;color:var(--dim);display:grid;justify-items:center;gap:9px;opacity:0;animation:fade 1s 1.3s forwards}
+.scroll-hint span{width:1px;height:38px;background:linear-gradient(var(--dim),transparent);animation:drop 2s infinite}
+@keyframes drop{0%{transform:scaleY(.2);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}50.1%{transform-origin:bottom}100%{transform:scaleY(.2);transform-origin:bottom}}
 
-/* ---------- secciones ---------- */
-section{padding:118px 0;position:relative;scroll-margin-top:84px}
-.head{max-width:56ch;margin-bottom:60px}
-.eyebrow{font-size:.8rem;letter-spacing:.3em;color:var(--brass);margin-bottom:16px}
-h2{font-size:clamp(2.1rem,5vw,3.5rem);margin-bottom:16px}
-h2 em{font-style:italic;color:var(--brass)}
-.head p{color:var(--dim);font-weight:300}
-.rv{opacity:0;transform:translateY(28px);transition:opacity .9s ease,transform .9s cubic-bezier(.2,1,.3,1)}
+/* ============ reveal ============ */
+.rv{opacity:0;transform:translateY(30px);transition:opacity .85s ease,transform .85s cubic-bezier(.2,1,.3,1)}
 .rv.on{opacity:1;transform:none}
 
-/* ---------- historia ---------- */
-.story{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
-.frame{position:relative;aspect-ratio:4/5;overflow:hidden;background:var(--night-2);border:1px solid var(--line)}
-.frame .inner{position:absolute;inset:0;background:
-  radial-gradient(60% 50% at 40% 30%,rgba(169,96,63,.5),transparent 70%),
-  radial-gradient(50% 40% at 75% 75%,rgba(217,164,65,.3),transparent 70%),
-  linear-gradient(160deg,#22190F,#0F1724);
-  will-change:transform}
-.frame .cap{position:absolute;left:0;right:0;bottom:0;padding:24px;font-size:.84rem;color:var(--sand);
-  background:linear-gradient(to top,rgba(15,23,36,.9),transparent)}
-.story h2{margin-bottom:22px}
-.story p{color:var(--dim);font-weight:300;margin-bottom:18px}
-.sign{font-family:var(--serif);font-style:italic;font-size:1.3rem;color:var(--brass);margin-top:26px}
+/* ============ secciones ============ */
+section{padding:118px 0;position:relative;scroll-margin-top:86px}
+.head{max-width:62ch;margin-bottom:58px}
+.eyebrow{font-size:.84rem;color:var(--ember);margin-bottom:14px;font-weight:600}
+h2{font-size:clamp(2.1rem,5vw,3.6rem);font-weight:900;margin-bottom:16px}
+.head p{color:var(--dim)}
 
-/* ---------- carta ---------- */
-.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:44px}
-.tab{background:none;border:1px solid var(--line);color:var(--sand);font-family:var(--sans);font-size:.88rem;
-  letter-spacing:.06em;padding:11px 22px;border-radius:999px;cursor:pointer;transition:all .35s}
-.tab:hover{border-color:var(--brass)}
-.tab.on{background:var(--brass);border-color:var(--brass);color:#1A1207}
-.menu{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:20px;perspective:1400px}
-.dish{position:relative;border:1px solid var(--line);background:linear-gradient(160deg,rgba(245,240,232,.055),rgba(245,240,232,.015));
-  padding:26px;display:flex;flex-direction:column;gap:12px;transform-style:preserve-3d;will-change:transform;
-  transition:transform .55s cubic-bezier(.2,1,.3,1),border-color .45s,background .45s}
-.dish:hover{border-color:rgba(217,164,65,.5);background:linear-gradient(160deg,rgba(217,164,65,.09),rgba(245,240,232,.02))}
-.dish-top{display:flex;justify-content:space-between;gap:16px;align-items:baseline}
-.dish h3{font-size:1.24rem;font-weight:500}
-.dish .val{font-family:var(--serif);font-size:1.2rem;color:var(--brass);white-space:nowrap}
-.dish p{color:var(--dim);font-size:.93rem;font-weight:300;flex:1}
-.marks{display:flex;gap:7px;flex-wrap:wrap}
-.mark{font-size:.72rem;letter-spacing:.1em;padding:4px 10px;border:1px solid var(--line);color:var(--sand)}
-.add{align-self:flex-start;background:none;border:1px solid var(--line);color:var(--bone);font-family:var(--sans);
-  font-size:.85rem;letter-spacing:.06em;padding:10px 20px;cursor:pointer;transition:all .35s}
-.add:hover{background:var(--brass);border-color:var(--brass);color:#1A1207}
-.add.done{background:var(--clay);border-color:var(--clay);color:var(--bone)}
+/* ---- catálogo 3D ---- */
+.grid-prod{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:26px;perspective:1600px}
+.prod{position:relative;border-radius:var(--r);border:1px solid var(--edge);background:linear-gradient(155deg,rgba(255,255,255,.09),rgba(255,255,255,.025));
+  backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);overflow:hidden;
+  transform-style:preserve-3d;will-change:transform;
+  transition:transform .5s cubic-bezier(.2,1,.3,1),box-shadow .5s,border-color .5s;
+  box-shadow:0 26px 60px -40px #000}
+.prod:hover{border-color:rgba(255,106,31,.45);box-shadow:0 40px 80px -40px rgba(255,106,31,.5)}
+.prod .shine{position:absolute;inset:0;pointer-events:none;opacity:0;transition:opacity .45s;
+  background:radial-gradient(38% 38% at var(--mx,50%) var(--my,50%),rgba(255,255,255,.2),transparent 70%)}
+.prod:hover .shine{opacity:1}
+.shot{position:relative;aspect-ratio:16/10;overflow:hidden;transform:translateZ(22px);
+  background:linear-gradient(150deg,#241640,#0E0B1B);display:grid;place-items:center}
+.shot::before{content:"Vista previa pronto";font-size:.82rem;color:var(--dim);position:absolute;z-index:0}
+.shot img{position:relative;z-index:1}
+.shot img{width:100%;height:100%;object-fit:cover;object-position:top;transition:transform .8s cubic-bezier(.2,1,.3,1)}
+.prod:hover .shot img{transform:scale(1.05)}
+.shot .fade{position:absolute;inset:0;background:linear-gradient(to top,rgba(14,11,27,.85),transparent 55%)}
+.pill{position:absolute;top:14px;left:14px;font-size:.74rem;font-weight:600;padding:6px 13px;border-radius:999px;
+  background:rgba(8,6,15,.7);border:1px solid var(--edge);backdrop-filter:blur(10px);color:var(--mint)}
+.prod .body{padding:24px;transform:translateZ(34px)}
+.prod h3{font-size:1.32rem;font-weight:700;margin-bottom:8px}
+.prod .desc{color:var(--dim);font-size:.95rem;margin-bottom:18px}
+.feats{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:22px}
+.feat{font-size:.76rem;padding:5px 11px;border-radius:8px;background:rgba(124,92,255,.14);border:1px solid rgba(124,92,255,.28);color:#C9BCFF}
+.buy{display:flex;align-items:center;justify-content:space-between;gap:14px;
+  padding-top:18px;border-top:1px solid rgba(255,255,255,.09)}
+.price{font-family:var(--display);font-size:1.75rem;font-weight:900;letter-spacing:-.04em}
+.price small{display:block;font-family:var(--text);font-size:.74rem;font-weight:400;color:var(--dim);letter-spacing:0}
+.buy .btn{padding:12px 24px;font-size:.93rem;border-radius:12px}
+.soon{opacity:.55}
+.soon .buy .btn{background:rgba(255,255,255,.08);color:var(--dim);box-shadow:none;cursor:not-allowed;border:1px solid var(--edge)}
 
-/* ---------- galería parallax ---------- */
-.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;height:min(76vh,620px)}
-.tile{position:relative;overflow:hidden;border:1px solid var(--line);background:var(--night-2)}
-.tile .fill{position:absolute;inset:-18% 0;will-change:transform}
-.tile:nth-child(1) .fill{background:linear-gradient(150deg,#3A2416,#0F1724)}
-.tile:nth-child(2) .fill{background:linear-gradient(150deg,#2A2010,#0F1724)}
-.tile:nth-child(3) .fill{background:linear-gradient(150deg,#1B2432,#0F1724)}
-.tile .fill::after{content:"";position:absolute;inset:0;
-  background:radial-gradient(55% 45% at 45% 35%,rgba(217,164,65,.28),transparent 70%)}
-.tile span{position:absolute;left:20px;bottom:18px;font-family:var(--serif);font-style:italic;font-size:1.05rem;z-index:2}
+/* ---- proceso ---- */
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:24px;counter-reset:s}
+.step{padding:30px;border-radius:var(--r);border:1px solid var(--edge);background:var(--pane);
+  backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);counter-increment:s;position:relative}
+.step::before{content:counter(s);font-family:var(--display);font-size:2.4rem;font-weight:900;
+  display:block;margin-bottom:14px;line-height:1;
+  background:linear-gradient(120deg,var(--ember),var(--volt));-webkit-background-clip:text;background-clip:text;color:transparent}
+.step h3{font-size:1.14rem;font-weight:700;margin-bottom:8px}
+.step p{color:var(--dim);font-size:.93rem}
 
-/* ---------- reserva ---------- */
-.book{display:grid;grid-template-columns:.9fr 1.1fr;gap:56px;align-items:center}
-.info li{list-style:none;padding:18px 0;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;gap:20px}
-.info li b{font-weight:500}
-.info li span{color:var(--dim);font-weight:300;text-align:right}
-form{border:1px solid var(--line);padding:34px;display:grid;gap:17px;background:rgba(245,240,232,.03)}
-label{display:block;font-size:.8rem;letter-spacing:.14em;color:var(--dim);margin-bottom:8px}
-input,select,textarea{width:100%;padding:13px 15px;background:rgba(15,23,36,.6);border:1px solid var(--line);
-  color:var(--bone);font-family:var(--sans);font-size:.96rem;border-radius:2px;transition:border-color .3s}
-input:focus,select:focus,textarea:focus{outline:none;border-color:var(--brass)}
-select option{background:var(--night)}
-textarea{resize:vertical;min-height:88px}
-.two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+/* ---- ventajas ---- */
+.perks{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1px;background:var(--edge);
+  border:1px solid var(--edge);border-radius:var(--r);overflow:hidden}
+.perk{background:var(--ink);padding:34px}
+.perk .k{font-family:var(--display);font-size:2.1rem;font-weight:900;letter-spacing:-.04em;margin-bottom:6px}
+.perk:nth-child(1) .k{color:var(--ember)}
+.perk:nth-child(2) .k{color:var(--volt)}
+.perk:nth-child(3) .k{color:var(--mint)}
+.perk:nth-child(4) .k{color:#FF3D8B}
+.perk p{color:var(--dim);font-size:.94rem}
 
-/* ---------- carrito ---------- */
-.panel{position:fixed;top:0;right:0;bottom:0;width:min(420px,100%);z-index:90;
-  background:var(--night-2);border-left:1px solid var(--line);
-  display:flex;flex-direction:column;transform:translateX(102%);transition:transform .5s cubic-bezier(.3,1,.3,1)}
-.panel.open{transform:none}
-.panel-h{display:flex;justify-content:space-between;align-items:center;padding:24px;border-bottom:1px solid var(--line)}
-.panel-h h3{font-size:1.3rem}
-.panel-x{background:none;border:0;color:var(--dim);font-size:1.6rem;cursor:pointer;line-height:1}
-.panel-b{flex:1;overflow-y:auto;padding:20px 24px}
-.empty{color:var(--dim);font-weight:300;text-align:center;padding:50px 0;font-size:.95rem}
-.row{display:flex;justify-content:space-between;gap:14px;align-items:center;padding:15px 0;border-bottom:1px solid var(--line)}
-.row .n{font-size:.95rem}
-.row .n small{display:block;color:var(--dim);font-size:.83rem}
-.qty{display:flex;align-items:center;gap:10px}
-.qty button{width:27px;height:27px;border:1px solid var(--line);background:none;color:var(--bone);cursor:pointer;
-  font-family:var(--sans);border-radius:2px;transition:all .3s}
-.qty button:hover{border-color:var(--brass);color:var(--brass)}
-.panel-f{padding:24px;border-top:1px solid var(--line)}
-.sub{display:flex;justify-content:space-between;color:var(--dim);font-size:.9rem;font-weight:300;margin-bottom:9px}
-.sum{display:flex;justify-content:space-between;align-items:baseline;font-family:var(--serif);font-size:1.55rem;
-  padding-top:12px;border-top:1px solid var(--line)}
-.sum span:last-child{color:var(--brass)}
-.hint{color:var(--dim);font-size:.83rem;font-weight:300;margin:14px 0 16px;text-align:center}
-.ok{color:var(--brass);font-size:.9rem;min-height:1.2em;text-align:center}
-.panel-f .btn{width:100%;text-align:center}
-.scrim{position:fixed;inset:0;z-index:85;background:rgba(6,10,16,.7);backdrop-filter:blur(4px);
-  opacity:0;visibility:hidden;transition:opacity .45s,visibility .45s}
-.scrim.on{opacity:1;visibility:visible}
+/* ---- faq ---- */
+.faq{max-width:820px}
+details{border-bottom:1px solid var(--edge);padding:22px 0}
+summary{cursor:pointer;list-style:none;font-weight:600;font-size:1.05rem;display:flex;justify-content:space-between;gap:20px;align-items:center}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-size:1.5rem;color:var(--ember);line-height:1;transition:transform .35s}
+details[open] summary::after{transform:rotate(45deg)}
+details p{color:var(--dim);margin-top:13px;font-size:.96rem}
 
-footer{padding:64px 0 40px;border-top:1px solid var(--line);background:var(--night-2)}
-.foot{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px}
-.foot h4{font-family:var(--serif);font-size:1.25rem;margin-bottom:14px}
-.foot p,.foot a{color:var(--dim);font-weight:300;font-size:.93rem}
-.foot a{display:block;padding:5px 0;transition:color .3s}
-.foot a:hover{color:var(--brass)}
-.legal{margin-top:46px;padding-top:24px;border-top:1px solid var(--line);color:var(--dim);font-size:.85rem;text-align:center}
+/* ---- cta final ---- */
+.final{position:relative;text-align:center;border-radius:28px;padding:74px 34px;overflow:hidden;
+  border:1px solid var(--edge);
+  background:linear-gradient(140deg,rgba(255,106,31,.18),rgba(124,92,255,.14) 55%,rgba(43,245,192,.10))}
+.final h2{margin-bottom:14px}
+.final p{color:var(--dim);max-width:46ch;margin:0 auto 30px}
 
-:focus-visible{outline:2px solid var(--brass);outline-offset:3px}
+footer{padding:56px 0 40px;border-top:1px solid var(--edge)}
+.foot{display:flex;flex-wrap:wrap;gap:24px;justify-content:space-between;align-items:center;color:var(--dim);font-size:.9rem}
+.foot nav{display:flex;gap:22px;flex-wrap:wrap}
+.foot a:hover{color:var(--bone)}
 
-@media (max-width:920px){
-  .links{position:fixed;inset:62px 0 auto 0;flex-direction:column;gap:0;padding:8px 6vw 20px;
-    background:rgba(15,23,36,.97);border-bottom:1px solid var(--line);display:none}
+:focus-visible{outline:2px solid var(--mint);outline-offset:3px;border-radius:8px}
+
+@media (max-width:900px){
+  .links{position:fixed;inset:64px 0 auto 0;flex-direction:column;gap:0;padding:10px 6vw 22px;
+    background:rgba(8,6,15,.97);border-bottom:1px solid var(--edge);display:none}
   .links.open{display:flex}
-  .links a{padding:14px 0;border-bottom:1px solid var(--line)}
+  .links a{padding:14px 0;border-bottom:1px solid rgba(255,255,255,.07)}
   .burger{display:block}
-  .story,.book{grid-template-columns:1fr;gap:36px}
-  .gallery{grid-template-columns:1fr;height:auto}
-  .tile{aspect-ratio:16/10}
-  .foot{grid-template-columns:1fr;gap:28px}
-  section{padding:84px 0}
-  .dish{transform:none!important}
+  .nav-btn{display:none}
+  section{padding:88px 0}
+  .prod{transform:none!important}
 }
 @media (prefers-reduced-motion:reduce){
   *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
   .rv{opacity:1;transform:none}
-  h1 .l > span{transform:none}
-  .over,.hero p,.hero-cta{opacity:1}
-  .hero-bg,.plate,.frame .inner,.tile .fill{transform:none!important}
+  .line > span{transform:none}
+  .hero p,.hero-cta,.scroll-hint{opacity:1}
+  .orb,.mesh{transform:none!important}
 }
 </style>
 </head>
 <body>
 
+<canvas id="sky" aria-hidden="true"></canvas>
+<div class="veil" aria-hidden="true"></div>
+
 <header class="nav" id="nav">
-  <a class="logo" href="#top">Casa <em>Nombre</em></a>
+  <a class="logo" href="#top"><span class="mark"></span>Olmic<span style="color:var(--ember)">Web</span></a>
   <button class="burger" id="burger" aria-label="Abrir menú" aria-expanded="false">☰</button>
   <nav class="links" id="links">
-    <a href="#historia">Historia</a>
-    <a href="#carta">Carta</a>
-    <a href="#lugar">El lugar</a>
-    <a href="#reserva">Reservar</a>
+    <a href="#productos">Plantillas</a>
+    <a href="#proceso">Cómo funciona</a>
+    <a href="#ventajas">Por qué Olmic</a>
+    <a href="#faq">Preguntas</a>
   </nav>
-  <div class="nav-side">
-    <button class="cart-btn" id="cart-open">Tu pedido <b id="count">0</b></button>
-  </div>
+  <a class="nav-btn" href="#productos">Ver plantillas</a>
 </header>
 
 <div class="hero" id="top">
-  <div class="hero-bg" data-p="0.20"></div>
-  <div class="grain"></div>
-  <div class="steam"><i></i><i></i><i></i></div>
-  <div class="plate" data-p="0.34"></div>
+  <div class="orb orb-a" data-depth="0.20"></div>
+  <div class="orb orb-b" data-depth="0.32"></div>
+  <div class="orb orb-c" data-depth="0.46"></div>
+  <div class="mesh" data-depth="0.12"></div>
 
   <div class="wrap hero-inner">
-    <p class="over">DESDE 1998 · COCINA DE AUTOR</p>
+    <span class="tagline"><i></i>Entrega inmediata tras la compra</span>
     <h1>
-      <span class="l"><span>Cocina que</span></span>
-      <span class="l"><span><em>se recuerda</em></span></span>
+      <span class="line"><span>Páginas web</span></span>
+      <span class="line"><span class="grad">que se ven</span></span>
+      <span class="line"><span>caras.</span></span>
     </h1>
-    <p>Producto local, fuego lento y una carta que cambia con la temporada. Reserva tu mesa y conoce la carta antes de llegar.</p>
+    <p>Plantillas terminadas, con animaciones y reservas por WhatsApp. Las descargas, cambias tu nombre y publicas el mismo día. Sin programar, sin mensualidades.</p>
     <div class="hero-cta">
-      <a class="btn btn-fill" href="#carta">Ver la carta</a>
-      <a class="btn btn-out" href="#reserva">Reservar mesa</a>
+      <a class="btn btn-solid" href="#productos">Ver plantillas disponibles</a>
+      <a class="btn btn-line" href="#proceso">Cómo funciona</a>
     </div>
   </div>
+
+  <div class="scroll-hint">Desliza<span></span></div>
 </div>
 
-<div class="ribbon">
-  <div class="track" id="track"></div>
-</div>
-
-<section id="historia">
-  <div class="wrap story">
-    <div class="frame rv">
-      <div class="inner" data-p="0.10"></div>
-      <div class="cap">Nuestro comedor principal</div>
-    </div>
-    <div class="rv">
-      <p class="eyebrow">LA CASA</p>
-      <h2>Veinticinco años <em>en la misma esquina</em></h2>
-      <p>Empezamos con seis mesas y una receta de familia. Hoy seguimos cocinando igual: producto del mercado, nada congelado y el mismo fuego de leña del primer día.</p>
-      <p>La carta cambia cuatro veces al año porque seguimos lo que da la tierra. Lo que no cambia es cómo lo hacemos.</p>
-      <p class="sign">— Nombre del chef</p>
-    </div>
-  </div>
-</section>
-
-<section id="carta">
+<section id="productos">
   <div class="wrap">
     <div class="head rv">
-      <p class="eyebrow">LA CARTA</p>
-      <h2>Para compartir <em>o no</em></h2>
-      <p>Arma tu pedido y mira cuánto suma antes de pedirlo. Solo es una guía: no se envía nada.</p>
+      <p class="eyebrow">Catálogo</p>
+      <h2>Plantillas disponibles</h2>
+      <p>Cada una viene lista para publicar, con guía de personalización en español y licencia de uso comercial.</p>
     </div>
-    <div class="tabs rv" id="tabs"></div>
-    <div class="menu" id="menu"></div>
+    <div class="grid-prod" id="catalogo"></div>
   </div>
 </section>
 
-<section id="lugar">
+<section id="proceso">
   <div class="wrap">
     <div class="head rv">
-      <p class="eyebrow">EL LUGAR</p>
-      <h2>Un sitio para <em>quedarse</em></h2>
+      <p class="eyebrow">Cómo funciona</p>
+      <h2>De la compra a tu web, el mismo día</h2>
     </div>
-    <div class="gallery rv">
-      <div class="tile"><div class="fill" data-p="0.07"></div><span>La barra</span></div>
-      <div class="tile"><div class="fill" data-p="0.11"></div><span>El horno de leña</span></div>
-      <div class="tile"><div class="fill" data-p="0.09"></div><span>La terraza</span></div>
+    <div class="steps">
+      <article class="step rv"><h3>Eliges tu plantilla</h3><p>Miras la demo en vivo, confirmas que te gusta y compras desde la pasarela segura.</p></article>
+      <article class="step rv"><h3>Descargas al instante</h3><p>Apenas se confirma el pago recibes el archivo por correo. No hay espera ni trámites.</p></article>
+      <article class="step rv"><h3>Cambias tus datos</h3><p>Abres el archivo, pones tu nombre y tu WhatsApp en las dos líneas señaladas. Cinco minutos.</p></article>
+      <article class="step rv"><h3>Publicas gratis</h3><p>Arrastras la carpeta a Netlify y tu web queda en línea. La guía te lleva paso a paso.</p></article>
     </div>
   </div>
 </section>
 
-<section id="reserva">
-  <div class="wrap book">
+<section id="ventajas">
+  <div class="wrap">
+    <div class="head rv">
+      <p class="eyebrow">Por qué Olmic</p>
+      <h2>Lo que no vas a encontrar en una plantilla de 5 dólares</h2>
+    </div>
+    <div class="perks rv">
+      <div class="perk"><div class="k">0</div><p>Mensualidades. Pagas una vez y el archivo es tuyo para siempre.</p></div>
+      <div class="perk"><div class="k">1</div><p>Solo un archivo. Sin WordPress, sin plugins, sin base de datos que se rompa.</p></div>
+      <div class="perk"><div class="k">5 min</div><p>Es lo que tardas en personalizarla. Los datos van en líneas marcadas.</p></div>
+      <div class="perk"><div class="k">100%</div><p>Responsiva. Se ve igual de bien en celular que en computador.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="wrap faq">
+    <div class="head rv">
+      <p class="eyebrow">Preguntas</p>
+      <h2>Lo que suelen preguntarme</h2>
+    </div>
     <div class="rv">
-      <p class="eyebrow">VISÍTANOS</p>
-      <h2>Reserva tu <em>mesa</em></h2>
-      <ul class="info">
-        <li><b>Dirección</b><span>Calle 00 #00-00<br>Tu ciudad</span></li>
-        <li><b>Teléfono</b><span>+57 300 000 0000</span></li>
-        <li><b>Almuerzo</b><span>Martes a domingo<br>12:00 — 3:30 pm</span></li>
-        <li><b>Cena</b><span>Jueves a sábado<br>7:00 — 11:00 pm</span></li>
-      </ul>
+      <details><summary>¿Necesito saber programar?</summary><p>No. Si sabes usar el Bloc de notas, puedes personalizarla. Los textos se cambian escribiendo encima y los colores desde un solo lugar del archivo, todo señalado en la guía.</p></details>
+      <details><summary>¿Dónde publico mi página?</summary><p>Netlify y GitHub Pages son gratis y sirven perfecto. La guía trae el paso a paso con capturas. Si después quieres tu propio dominio, también te explico cómo conectarlo.</p></details>
+      <details><summary>¿El pago es seguro?</summary><p>Sí. La compra se procesa en Hotmart, una plataforma con años en el mercado que maneja los pagos bajo los estándares internacionales de seguridad. Tus datos de tarjeta nunca pasan por este sitio.</p></details>
+      <details><summary>¿Puedo usarla para un cliente mío?</summary><p>Sí. La licencia cubre un proyecto final, tuyo o de un cliente. Si vas a usarla en varios sitios, necesitas una licencia por cada uno.</p></details>
+      <details><summary>¿Qué pasa si no me gusta?</summary><p>Tienes derecho a reembolso dentro del plazo que indica la plataforma al momento de comprar. Se solicita directo desde Hotmart.</p></details>
+      <details><summary>¿Hacen páginas a la medida?</summary><p>Sí. Si necesitas algo específico que no está en el catálogo, escríbeme y lo cotizamos.</p></details>
     </div>
-
-    <form id="book" class="rv">
-      <div class="two">
-        <div><label for="b-n">NOMBRE</label><input id="b-n" required placeholder="Tu nombre"></div>
-        <div><label for="b-t">TELÉFONO</label><input id="b-t" required placeholder="+57 300 000 0000"></div>
-      </div>
-      <div class="two">
-        <div><label for="b-d">FECHA</label><input type="date" id="b-d" required></div>
-        <div><label for="b-h">HORA</label><input type="time" id="b-h" value="19:30" required></div>
-      </div>
-      <div class="two">
-        <div>
-          <label for="b-p">PERSONAS</label>
-          <select id="b-p"><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>Más de 6</option></select>
-        </div>
-        <div>
-          <label for="b-z">ZONA</label>
-          <select id="b-z"><option>Salón</option><option>Terraza</option><option>Barra</option><option>Sin preferencia</option></select>
-        </div>
-      </div>
-      <div><label for="b-m">ALGO QUE DEBAMOS SABER</label><textarea id="b-m" placeholder="Alergias, celebración, silla para bebé..."></textarea></div>
-      <button class="btn btn-fill" type="submit">Enviar solicitud</button>
-      <p class="ok" id="ok" role="status"></p>
-    </form>
   </div>
 </section>
 
-<div class="scrim" id="scrim"></div>
-<aside class="panel" id="panel" role="dialog" aria-modal="true" aria-labelledby="panel-t">
-  <div class="panel-h">
-    <h3 id="panel-t">Tu pedido</h3>
-    <button class="panel-x" id="panel-x" aria-label="Cerrar">×</button>
+<section>
+  <div class="wrap">
+    <div class="final rv">
+      <h2>¿Listo para tener tu web?</h2>
+      <p>Elige tu plantilla y publícala hoy mismo. O escríbeme si quieres algo hecho a la medida.</p>
+      <div class="hero-cta">
+        <a class="btn btn-solid" href="#productos">Ver plantillas</a>
+        <a class="btn btn-line" id="wa" href="#" target="_blank" rel="noopener noreferrer">Escribir por WhatsApp</a>
+      </div>
+    </div>
   </div>
-  <div class="panel-b" id="panel-b"></div>
-  <div class="panel-f">
-    <div class="sub"><span id="nitems">0 platos</span><span id="sub">$0</span></div>
-    <div class="sum"><span>Total</span><span id="total">$0</span></div>
-    <p class="hint" id="hint">Muéstrale esta selección a tu mesero.</p>
-    <button class="btn btn-out" id="clear">Empezar de nuevo</button>
-  </div>
-</aside>
+</section>
 
 <footer>
-  <div class="wrap">
-    <div class="foot">
-      <div>
-        <h4>Casa <em style="color:var(--brass)">Nombre</em></h4>
-        <p>Cocina de autor con producto local. Martes a domingo.</p>
-      </div>
-      <div>
-        <h4>Contacto</h4>
-        <a href="#reserva">Calle 00 #00-00</a>
-        <a href="#reserva">+57 300 000 0000</a>
-        <a href="#reserva">hola@tudominio.com</a>
-      </div>
-      <div>
-        <h4>Síguenos</h4>
-        <a href="#" target="_blank" rel="noopener noreferrer">Instagram</a>
-        <a href="#" target="_blank" rel="noopener noreferrer">Facebook</a>
-        <a href="#" target="_blank" rel="noopener noreferrer">TripAdvisor</a>
-      </div>
-    </div>
-    <p class="legal">© <span id="y"></span> Casa Nombre. Todos los derechos reservados.</p>
+  <div class="wrap foot">
+    <span>© <span id="year"></span> Olmic Web · Olmic Developers. Todos los derechos reservados.</span>
+    <nav>
+      <a href="#productos">Plantillas</a>
+      <a href="#proceso">Cómo funciona</a>
+      <a href="#faq">Preguntas</a>
+      <a id="wa2" href="#" target="_blank" rel="noopener noreferrer">Contacto</a>
+    </nav>
   </div>
 </footer>
 
 <script>
-/* ===================== CONFIGURACIÓN ===================== */
+/* ==========================================================
+   CONFIGURACIÓN — edita solo este bloque
+   ========================================================== */
 
-const RESTAURANTE = 'Casa Nombre';
-const MONEDA = '$';
-const PROPINA = 0.10;
+const WHATSAPP = '573000000000';
 
-const CARTA = [
-  {cat:'Entradas', nombre:'Burrata de la casa', desc:'Con tomate asado, albahaca y aceite de oliva virgen.', precio:28000, marcas:['VEGETARIANO']},
-  {cat:'Entradas', nombre:'Ceviche de temporada', desc:'Pescado del día, leche de tigre y camote crocante.', precio:34000, marcas:['SIN GLUTEN']},
-  {cat:'Entradas', nombre:'Croquetas de jamón', desc:'Ocho unidades, receta de la abuela.', precio:24000, marcas:[]},
-  {cat:'Principales', nombre:'Costilla al horno de leña', desc:'Ocho horas de cocción lenta, puré de papa criolla.', precio:62000, marcas:['NUESTRO CLÁSICO']},
-  {cat:'Principales', nombre:'Risotto de hongos', desc:'Portobello, parmesano curado y aceite de trufa.', precio:48000, marcas:['VEGETARIANO']},
-  {cat:'Principales', nombre:'Lomo al carbón', desc:'300 g, chimichurri de la casa y papas rústicas.', precio:68000, marcas:['SIN GLUTEN']},
-  {cat:'Principales', nombre:'Pesca del día', desc:'A la plancha con verduras de temporada.', precio:58000, marcas:['SIN GLUTEN']},
-  {cat:'Postres', nombre:'Tres leches de la casa', desc:'Con merengue tostado y frutos rojos.', precio:19000, marcas:[]},
-  {cat:'Postres', nombre:'Volcán de chocolate', desc:'Chocolate 70% con helado de vainilla.', precio:21000, marcas:[]},
-  {cat:'Bebidas', nombre:'Limonada de coco', desc:'Jarra para compartir.', precio:18000, marcas:[]},
-  {cat:'Bebidas', nombre:'Copa de vino', desc:'Tinto o blanco de la selección del sommelier.', precio:22000, marcas:[]},
-  {cat:'Bebidas', nombre:'Café de origen', desc:'Grano colombiano de finca, método a elección.', precio:9000, marcas:[]}
+const PRODUCTOS = [
+  {
+    nombre: 'Plantilla Entrenador Personal',
+    etiqueta: 'Disponible',
+    descripcion: 'Landing completa para entrenadores y coaches fitness, con sistema de reservas que llega directo a tu WhatsApp.',
+    caracteristicas: ['Parallax', 'Glassmorfismo', 'Reservas WhatsApp', 'Responsiva'],
+    precio: '$49.900',
+    nota: 'Pago único · COP',
+    imagen: 'img/entrenador.jpg',
+    checkout: 'https://pay.hotmart.com/A107668048M',
+    demo: '',
+    disponible: true
+  },
+  {
+    nombre: 'Plantilla Restaurante',
+    etiqueta: 'Disponible',
+    descripcion: 'Carta digital con carrito, reservas de mesa y pedidos que llegan armados a tu WhatsApp.',
+    caracteristicas: ['Carta editable', 'Carrito', 'Reservas', 'Parallax'],
+    precio: '$59.900',
+    nota: 'Pago único · COP',
+    imagen: 'img/restaurante.jpg',
+    checkout: 'https://pay.hotmart.com/N107673052J',
+    demo: '',
+    disponible: true
+  }
 ];
 
-const FRASES = ['Producto local', 'Horno de leña', 'Carta de temporada', 'Sin congelados', 'Vinos naturales'];
-
-/* ========================================================= */
-
-const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-const fino = matchMedia('(pointer: fine)').matches;
+/* ========================================================== */
 
 const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const fmt = n => MONEDA + n.toLocaleString('es-CO');
-document.getElementById('y').textContent = new Date().getFullYear();
 
-const hoy = new Date(); hoy.setDate(hoy.getDate() + 1);
-document.getElementById('b-d').value = hoy.toISOString().slice(0,10);
-document.getElementById('b-d').min = new Date().toISOString().slice(0,10);
+const waLink = texto => `https://wa.me/${encodeURIComponent(WHATSAPP)}?text=${encodeURIComponent(texto)}`;
 
-document.getElementById('track').innerHTML =
-  [...FRASES, ...FRASES, ...FRASES, ...FRASES].map(f => `<span>${esc(f)}</span>`).join('');
+document.getElementById('year').textContent = new Date().getFullYear();
+document.getElementById('wa').href = waLink('Hola Olmic Web, quiero información sobre una página web.');
+document.getElementById('wa2').href = waLink('Hola Olmic Web, quiero información sobre una página web.');
 
-const cats = [...new Set(CARTA.map(d => d.cat))];
-const tabs = document.getElementById('tabs');
-const menu = document.getElementById('menu');
+const catalogo = document.getElementById('catalogo');
 
-tabs.innerHTML = ['Todo', ...cats]
-  .map((c,i) => `<button class="tab${i===0?' on':''}" data-c="${esc(c)}">${esc(c)}</button>`).join('');
+catalogo.innerHTML = PRODUCTOS.map(p => {
+  const feats = p.caracteristicas.map(f => `<span class="feat">${esc(f)}</span>`).join('');
+  const shot = p.imagen
+    ? `<img src="${esc(p.imagen)}" alt="Vista previa de ${esc(p.nombre)}" loading="lazy" width="800" height="500" onerror="this.remove()">`
+    : '';
+  const accion = p.disponible
+    ? `<a class="btn btn-solid" href="${esc(p.checkout)}" target="_blank" rel="noopener noreferrer">Comprar</a>`
+    : `<button class="btn" type="button" disabled>Pronto</button>`;
+  const demo = p.demo
+    ? `<a class="btn btn-line" href="${esc(p.demo)}" target="_blank" rel="noopener noreferrer" style="padding:12px 20px;font-size:.9rem">Demo</a>`
+    : '';
 
-function pintar(cat){
-  const lista = cat === 'Todo' ? CARTA : CARTA.filter(d => d.cat === cat);
-  menu.innerHTML = lista.map(d => {
-    const i = CARTA.indexOf(d);
-    const marks = d.marcas.map(m => `<span class="mark">${esc(m)}</span>`).join('');
-    return `
-    <article class="dish">
-      <div class="dish-top"><h3>${esc(d.nombre)}</h3><span class="val">${fmt(d.precio)}</span></div>
-      <p>${esc(d.desc)}</p>
-      ${marks ? `<div class="marks">${marks}</div>` : ''}
-      <button class="add" data-i="${i}">Agregar</button>
-    </article>`;
-  }).join('');
-  tilt();
+  return `
+  <article class="prod rv${p.disponible ? '' : ' soon'}">
+    <div class="shine"></div>
+    <div class="shot">${shot}<div class="fade"></div><span class="pill">${esc(p.etiqueta)}</span></div>
+    <div class="body">
+      <h3>${esc(p.nombre)}</h3>
+      <p class="desc">${esc(p.descripcion)}</p>
+      <div class="feats">${feats}</div>
+      <div class="buy">
+        <div class="price">${esc(p.precio)}<small>${esc(p.nota)}</small></div>
+        <div style="display:flex;gap:9px">${demo}${accion}</div>
+      </div>
+    </div>
+  </article>`;
+}).join('');
+
+const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const fino = window.matchMedia('(pointer: fine)').matches;
+
+/* --- tilt 3D en tarjetas --- */
+if (!reduce && fino) {
+  document.querySelectorAll('.prod').forEach(card => {
+    card.addEventListener('pointermove', e => {
+      const r = card.getBoundingClientRect();
+      const x = (e.clientX - r.left) / r.width;
+      const y = (e.clientY - r.top) / r.height;
+      card.style.setProperty('--mx', (x * 100) + '%');
+      card.style.setProperty('--my', (y * 100) + '%');
+      card.style.transform =
+        `perspective(1000px) rotateY(${(x - .5) * 11}deg) rotateX(${(.5 - y) * 11}deg) translateY(-6px)`;
+    });
+    card.addEventListener('pointerleave', () => { card.style.transform = ''; });
+  });
 }
-pintar('Todo');
 
-tabs.addEventListener('click', e => {
-  const t = e.target.closest('.tab');
-  if (!t) return;
-  tabs.querySelectorAll('.tab').forEach(x => x.classList.remove('on'));
-  t.classList.add('on');
-  pintar(t.dataset.c);
-});
-
-/* ---- carrito ---- */
-const pedido = new Map();
-const panel = document.getElementById('panel');
-const scrim = document.getElementById('scrim');
-const cuenta = document.getElementById('count');
-
-function render(){
-  const b = document.getElementById('panel-b');
-  if (!pedido.size) {
-    b.innerHTML = '<p class="empty">Aún no has agregado nada.<br>Elige algo de la carta.</p>';
-  } else {
-    b.innerHTML = [...pedido.entries()].map(([i,q]) => {
-      const d = CARTA[i];
-      return `
-      <div class="row">
-        <div class="n">${esc(d.nombre)}<small>${fmt(d.precio)} c/u</small></div>
-        <div class="qty">
-          <button data-m="${i}" aria-label="Quitar uno">−</button>
-          <span>${q}</span>
-          <button data-p="${i}" aria-label="Agregar uno">+</button>
-        </div>
-      </div>`;
-    }).join('');
-  }
-  let t = 0, n = 0;
-  pedido.forEach((q,i) => { t += CARTA[i].precio * q; n += q; });
-  const prop = Math.round(t * PROPINA);
-  document.getElementById('sub').textContent = fmt(t);
-  document.getElementById('nitems').textContent = n === 1 ? '1 plato' : n + ' platos';
-  document.getElementById('total').textContent = fmt(t + prop);
-  document.getElementById('hint').textContent = n
-    ? `Incluye ${Math.round(PROPINA*100)}% de propina sugerida (${fmt(prop)}). Muéstrale esta selección a tu mesero.`
-    : 'Muéstrale esta selección a tu mesero.';
-  document.getElementById('clear').style.display = n ? '' : 'none';
-  cuenta.textContent = n;
-  cuenta.classList.toggle('show', n > 0);
-}
-render();
-
-menu.addEventListener('click', e => {
-  const b = e.target.closest('.add');
-  if (!b) return;
-  const i = +b.dataset.i;
-  pedido.set(i, (pedido.get(i) || 0) + 1);
-  b.textContent = 'Agregado ✓';
-  b.classList.add('done');
-  setTimeout(() => { b.textContent = 'Agregar'; b.classList.remove('done'); }, 1300);
-  render();
-});
-
-document.getElementById('panel-b').addEventListener('click', e => {
-  const btn = e.target.closest('button');
-  if (!btn) return;
-  if (btn.dataset.p !== undefined) {
-    const i = +btn.dataset.p;
-    pedido.set(i, pedido.get(i) + 1);
-  } else if (btn.dataset.m !== undefined) {
-    const i = +btn.dataset.m;
-    const q = pedido.get(i) - 1;
-    q > 0 ? pedido.set(i, q) : pedido.delete(i);
-  }
-  render();
-});
-
-const abrir = () => { panel.classList.add('open'); scrim.classList.add('on'); document.body.style.overflow = 'hidden'; };
-const cerrar = () => { panel.classList.remove('open'); scrim.classList.remove('on'); document.body.style.overflow = ''; };
-document.getElementById('cart-open').addEventListener('click', abrir);
-document.getElementById('panel-x').addEventListener('click', cerrar);
-scrim.addEventListener('click', cerrar);
-addEventListener('keydown', e => { if (e.key === 'Escape') cerrar(); });
-
-document.getElementById('clear').addEventListener('click', () => { pedido.clear(); render(); });
-
-document.getElementById('book').addEventListener('submit', e => {
-  e.preventDefault();
-  const v = id => document.getElementById(id).value;
-  const [a,m,d] = v('b-d').split('-');
-  const fecha = new Date(a, m-1, d).toLocaleDateString('es-CO', {weekday:'long', day:'numeric', month:'long'});
-  document.getElementById('ok').textContent =
-    `Gracias ${v('b-n')}. Recibimos tu solicitud para el ${fecha} a las ${v('b-h')}. Te llamamos para confirmar.`;
-  e.target.reset();
-  document.getElementById('b-d').value = hoy.toISOString().slice(0,10);
-});
-
-/* ---- movimiento ---- */
-const capas = () => [...document.querySelectorAll('[data-p]')];
+/* --- parallax --- */
+const capas = [...document.querySelectorAll('[data-depth]')];
 const nav = document.getElementById('nav');
 let raf = false;
 
 function tick(){
-  const y = scrollY;
-  nav.classList.toggle('stuck', y > 40);
+  const y = window.scrollY;
+  nav.classList.toggle('stuck', y > 30);
   if (!reduce) {
-    for (const c of capas()) {
-      const host = c.parentElement;
-      const box = host.getBoundingClientRect();
-      if (box.bottom > -300 && box.top < innerHeight + 300) {
-        const rel = c.classList.contains('plate') || c.classList.contains('hero-bg')
-          ? y
-          : (innerHeight - box.top) - innerHeight * .5;
-        c.style.transform = (c.classList.contains('plate') ? 'translate(-50%,-50%) ' : '') +
-          `translate3d(0,${rel * parseFloat(c.dataset.p)}px,0)`;
-      }
+    for (const c of capas) {
+      c.style.transform = `translate3d(0, ${y * parseFloat(c.dataset.depth)}px, 0)`;
     }
   }
   raf = false;
@@ -579,32 +441,88 @@ function tick(){
 addEventListener('scroll', () => { if (!raf) { raf = true; requestAnimationFrame(tick); } }, {passive:true});
 tick();
 
-function tilt(){
-  if (reduce || !fino) return;
-  document.querySelectorAll('.dish').forEach(c => {
-    c.addEventListener('pointermove', e => {
-      const r = c.getBoundingClientRect();
-      const x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height;
-      c.style.transform = `perspective(900px) rotateY(${(x-.5)*8}deg) rotateX(${(.5-y)*8}deg) translateY(-5px)`;
-    });
-    c.addEventListener('pointerleave', () => { c.style.transform = ''; });
+/* --- reveals --- */
+const io = new IntersectionObserver((es) => {
+  es.forEach((e, i) => {
+    if (e.isIntersecting) { setTimeout(() => e.target.classList.add('on'), i * 85); io.unobserve(e.target); }
   });
-}
-
-const io = new IntersectionObserver(es => {
-  es.forEach((e,i) => { if (e.isIntersecting) { setTimeout(() => e.target.classList.add('on'), i*90); io.unobserve(e.target); } });
 }, {threshold:.12, rootMargin:'0px 0px -50px'});
 document.querySelectorAll('.rv').forEach(el => io.observe(el));
 
+/* --- menú móvil --- */
 const links = document.getElementById('links');
 const burger = document.getElementById('burger');
 burger.addEventListener('click', () => {
-  const o = links.classList.toggle('open');
-  burger.setAttribute('aria-expanded', o);
+  const open = links.classList.toggle('open');
+  burger.setAttribute('aria-expanded', open);
 });
 links.addEventListener('click', e => {
   if (e.target.tagName === 'A') { links.classList.remove('open'); burger.setAttribute('aria-expanded', false); }
 });
+
+/* --- fondo: campo de partículas con conexiones --- */
+(() => {
+  if (reduce) return;
+  const cv = document.getElementById('sky');
+  const cx = cv.getContext('2d', {alpha:true});
+  const tonos = ['255,106,31', '124,92,255', '43,245,192'];
+  let w, h, dpr, pts, mouse = {x:-999, y:-999};
+
+  function init(){
+    dpr = Math.min(devicePixelRatio || 1, 2);
+    w = cv.width = innerWidth * dpr;
+    h = cv.height = innerHeight * dpr;
+    cv.style.width = innerWidth + 'px';
+    cv.style.height = innerHeight + 'px';
+    const n = Math.min(Math.floor(innerWidth * innerHeight / 17000), 110);
+    pts = Array.from({length:n}, () => ({
+      x: Math.random() * w, y: Math.random() * h,
+      vx: (Math.random() - .5) * .22 * dpr, vy: (Math.random() - .5) * .22 * dpr,
+      r: (Math.random() * 1.5 + .7) * dpr,
+      c: tonos[(Math.random() * tonos.length) | 0]
+    }));
+  }
+
+  function draw(){
+    cx.clearRect(0, 0, w, h);
+    const lim = 132 * dpr, pull = 168 * dpr;
+
+    for (const p of pts) {
+      p.x += p.vx; p.y += p.vy;
+      if (p.x < 0 || p.x > w) p.vx *= -1;
+      if (p.y < 0 || p.y > h) p.vy *= -1;
+
+      const dx = mouse.x - p.x, dy = mouse.y - p.y;
+      const d = Math.hypot(dx, dy);
+      if (d < pull && d > 1) { p.x -= dx / d * .55; p.y -= dy / d * .55; }
+
+      cx.beginPath();
+      cx.arc(p.x, p.y, p.r, 0, 6.2832);
+      cx.fillStyle = `rgba(${p.c},.7)`;
+      cx.fill();
+    }
+
+    for (let i = 0; i < pts.length; i++) {
+      for (let j = i + 1; j < pts.length; j++) {
+        const a = pts[i], b = pts[j];
+        const d = Math.hypot(a.x - b.x, a.y - b.y);
+        if (d < lim) {
+          cx.beginPath();
+          cx.moveTo(a.x, a.y); cx.lineTo(b.x, b.y);
+          cx.strokeStyle = `rgba(${a.c},${(1 - d / lim) * .2})`;
+          cx.lineWidth = dpr * .6;
+          cx.stroke();
+        }
+      }
+    }
+    requestAnimationFrame(draw);
+  }
+
+  addEventListener('pointermove', e => { mouse.x = e.clientX * dpr; mouse.y = e.clientY * dpr; }, {passive:true});
+  addEventListener('pointerleave', () => { mouse.x = mouse.y = -999; });
+  addEventListener('resize', init);
+  init(); draw();
+})();
 </script>
 </body>
 </html>
