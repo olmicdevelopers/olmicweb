@@ -1,0 +1,669 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Nombre del Salón · Belleza y cuidado</title>
+<meta name="description" content="Salón de belleza: cabello, uñas, cejas, pestañas, maquillaje y spa. Reserva tu cita por WhatsApp.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --crema:#F7F1EB;
+  --arena:#EFE4DA;
+  --rosa:#E6C3B9;
+  --tinta:#2A1F1D;
+  --oro:#B08D57;
+  --gris:#7A6B66;
+  --blanco:#FFFDFB;
+  --r:22px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Manrope',system-ui,sans-serif;background:var(--crema);color:var(--tinta);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img,svg{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;cursor:pointer;border:0;background:none}
+.serif{font-family:'Cormorant Garamond',Georgia,serif}
+.wrap{width:min(1160px,100% - 40px);margin:0 auto}
+section{padding:110px 0}
+.eyebrow{font-size:.74rem;letter-spacing:.28em;text-transform:uppercase;color:var(--oro);font-weight:700;margin-bottom:14px}
+h2{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(2.3rem,5vw,3.6rem);line-height:1.05;letter-spacing:-.01em}
+h2 em{color:var(--oro)}
+.lead{color:var(--gris);max-width:560px;margin-top:14px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:15px 28px;border-radius:999px;font-weight:600;font-size:.94rem;transition:transform .3s,box-shadow .3s,background .3s}
+.btn-d{background:var(--tinta);color:var(--crema)}
+.btn-d:hover{transform:translateY(-2px);box-shadow:0 16px 30px -14px rgba(42,31,29,.6)}
+.btn-l{border:1px solid rgba(42,31,29,.25)}
+.btn-l:hover{background:var(--tinta);color:var(--crema)}
+.rv{opacity:0;transform:translateY(26px);transition:opacity .9s,transform .9s cubic-bezier(.2,.7,.2,1)}
+.rv.in{opacity:1;transform:none}
+
+/* nav */
+.nav{position:fixed;inset:0 0 auto;z-index:50;transition:background .4s,box-shadow .4s}
+.nav.s{background:rgba(247,241,235,.86);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 1px 0 rgba(42,31,29,.08)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:78px}
+.logo{font-family:'Cormorant Garamond',serif;font-size:1.65rem;font-weight:600;letter-spacing:.02em}
+.logo span{color:var(--oro)}
+.menu{display:flex;gap:30px;font-size:.9rem}
+.menu a{position:relative}
+.menu a::after{content:"";position:absolute;left:0;bottom:-4px;width:0;height:1px;background:var(--oro);transition:width .3s}
+.menu a:hover::after{width:100%}
+.cita-btn{position:relative;display:flex;align-items:center;gap:8px;padding:11px 20px;border-radius:999px;background:var(--tinta);color:var(--crema);font-size:.88rem;font-weight:600}
+.cita-btn b{min-width:22px;height:22px;border-radius:50%;background:var(--oro);color:#fff;display:grid;place-items:center;font-size:.74rem}
+.burger{display:none}
+
+/* hero */
+.hero{min-height:100vh;display:grid;align-items:center;padding:120px 0 70px;position:relative}
+.hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:60px;align-items:center}
+.hero h1{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(3.2rem,7.4vw,6.4rem);line-height:.95;letter-spacing:-.02em}
+.hero h1 em{color:var(--oro);font-style:italic}
+.hero p{font-size:1.08rem;color:var(--gris);max-width:470px;margin:26px 0 34px}
+.hero-cta{display:flex;gap:12px;flex-wrap:wrap}
+.hero-datos{display:flex;gap:34px;margin-top:48px}
+.hero-datos b{font-family:'Cormorant Garamond',serif;font-size:2.2rem;font-weight:600;display:block;line-height:1}
+.hero-datos span{font-size:.8rem;color:var(--gris)}
+.arco{position:relative;aspect-ratio:4/5;border-radius:999px 999px 26px 26px;overflow:hidden;background:linear-gradient(170deg,#EAD3C9,#D9B3A6 60%,#C99A8A)}
+.arco svg{position:absolute;inset:0;width:100%;height:100%}
+.flota{position:absolute;background:var(--blanco);border-radius:18px;padding:14px 18px;box-shadow:0 20px 40px -20px rgba(42,31,29,.35);font-size:.82rem;animation:flota 6s ease-in-out infinite}
+.flota b{display:block;font-size:.95rem}
+.f1{left:-40px;bottom:18%}
+.f2{right:-24px;top:14%;animation-delay:-3s}
+.f1 i,.f2 i{color:var(--oro);font-style:normal}
+@keyframes flota{50%{transform:translateY(-10px)}}
+
+/* marquee */
+.cinta{background:var(--tinta);color:var(--crema);padding:18px 0;overflow:hidden;white-space:nowrap}
+.cinta div{display:inline-block;animation:cinta 28s linear infinite;font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-style:italic}
+.cinta span{margin:0 26px;color:var(--oro)}
+@keyframes cinta{to{transform:translateX(-50%)}}
+
+/* servicios */
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:40px 0 30px}
+.tab{padding:10px 20px;border-radius:999px;border:1px solid rgba(42,31,29,.18);font-size:.88rem;font-weight:600;transition:all .3s}
+.tab.on{background:var(--tinta);color:var(--crema);border-color:var(--tinta)}
+.lista-serv{display:grid;grid-template-columns:repeat(2,1fr);gap:0 50px}
+.serv{display:grid;grid-template-columns:1fr auto;gap:4px 20px;padding:22px 0;border-bottom:1px solid rgba(42,31,29,.12);animation:entra .5s both}
+.serv h3{font-family:'Cormorant Garamond',serif;font-size:1.45rem;font-weight:600;line-height:1.2}
+.serv p{grid-column:1;font-size:.87rem;color:var(--gris)}
+.serv .pr{text-align:right;font-weight:700}
+.serv .pr small{display:block;font-weight:500;color:var(--gris);font-size:.78rem}
+.serv button{grid-column:2;justify-self:end;font-size:.8rem;font-weight:700;padding:7px 14px;border-radius:999px;border:1px solid var(--tinta);transition:all .25s}
+.serv button:hover,.serv button.on{background:var(--tinta);color:var(--crema)}
+@keyframes entra{from{opacity:0;transform:translateY(12px)}}
+
+/* probador */
+.probador{background:var(--arena)}
+.prob{display:grid;grid-template-columns:.9fr 1.1fr;gap:60px;align-items:center;margin-top:44px}
+.lienzo{background:var(--blanco);border-radius:var(--r);aspect-ratio:1;position:relative;overflow:hidden;box-shadow:0 30px 60px -40px rgba(42,31,29,.5)}
+.lienzo svg{width:100%;height:100%}
+.lienzo .tag{position:absolute;left:18px;bottom:18px;background:var(--tinta);color:var(--crema);padding:8px 14px;border-radius:999px;font-size:.8rem;font-weight:600}
+.opc h3{font-size:.78rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gris);margin:26px 0 12px;font-weight:700}
+.opc h3:first-child{margin-top:0}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{padding:10px 16px;border-radius:14px;background:var(--blanco);font-size:.87rem;font-weight:600;border:1px solid transparent;transition:all .25s}
+.chip.on{border-color:var(--tinta);box-shadow:0 8px 18px -12px rgba(42,31,29,.6)}
+.tonos{display:flex;flex-wrap:wrap;gap:12px}
+.tono{width:46px;height:46px;border-radius:50%;border:3px solid var(--blanco);box-shadow:0 0 0 1px rgba(42,31,29,.15);transition:transform .25s}
+.tono.on{transform:scale(1.14);box-shadow:0 0 0 2px var(--tinta)}
+.resumen-look{margin-top:30px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;padding:20px 22px;background:var(--blanco);border-radius:18px}
+.resumen-look b{font-family:'Cormorant Garamond',serif;font-size:1.6rem}
+.resumen-look small{display:block;color:var(--gris);font-size:.8rem}
+#pelo,#mechas{transition:fill .5s,d .5s}
+
+/* equipo */
+.equipo{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;margin-top:44px}
+.pers{text-align:center}
+.pers .av{aspect-ratio:3/4;border-radius:999px 999px 20px 20px;overflow:hidden;margin-bottom:16px;transition:transform .5s}
+.pers:hover .av{transform:translateY(-6px)}
+.pers h3{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:600}
+.pers p{font-size:.84rem;color:var(--gris)}
+
+/* reserva */
+.reserva{background:var(--tinta);color:var(--crema)}
+.reserva .eyebrow{color:var(--rosa)}
+.reserva .lead{color:rgba(247,241,235,.7)}
+.pasos{display:grid;grid-template-columns:1.3fr .7fr;gap:40px;margin-top:44px;align-items:start}
+.paso{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:var(--r);padding:26px;margin-bottom:18px}
+.paso h3{font-size:.8rem;letter-spacing:.2em;text-transform:uppercase;color:var(--rosa);margin-bottom:16px;display:flex;gap:10px;align-items:center}
+.paso h3 i{font-style:normal;width:24px;height:24px;border-radius:50%;border:1px solid var(--rosa);display:grid;place-items:center;font-size:.72rem;letter-spacing:0}
+.dias{display:grid;grid-template-columns:repeat(7,1fr);gap:8px}
+.dia{padding:12px 4px;border-radius:14px;background:rgba(255,255,255,.06);text-align:center;font-size:.76rem;transition:all .25s}
+.dia b{display:block;font-size:1.25rem;font-family:'Cormorant Garamond',serif}
+.dia.on{background:var(--crema);color:var(--tinta)}
+.dia:disabled{opacity:.25;cursor:not-allowed}
+.horas{display:grid;grid-template-columns:repeat(auto-fill,minmax(78px,1fr));gap:8px}
+.hora{padding:10px 0;border-radius:12px;background:rgba(255,255,255,.06);font-size:.86rem;font-weight:600;transition:all .25s}
+.hora.on{background:var(--oro);color:#fff}
+.vacio{color:rgba(247,241,235,.55);font-size:.9rem;grid-column:1/-1}
+.estil{display:flex;flex-wrap:wrap;gap:8px}
+.estil .chip{background:rgba(255,255,255,.06);color:var(--crema)}
+.estil .chip.on{background:var(--crema);color:var(--tinta)}
+.campo{display:grid;gap:6px;margin-bottom:12px}
+.campo label{font-size:.78rem;color:rgba(247,241,235,.7)}
+.campo input,.campo textarea{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-radius:12px;padding:13px 14px;color:var(--crema);font:inherit;font-size:.92rem}
+.campo input:focus,.campo textarea:focus{outline:none;border-color:var(--oro)}
+.ticket{position:sticky;top:100px;background:var(--crema);color:var(--tinta);border-radius:var(--r);padding:28px}
+.ticket h3{font-family:'Cormorant Garamond',serif;font-size:1.9rem;font-weight:600;margin-bottom:6px}
+.t-item{display:flex;justify-content:space-between;gap:10px;padding:10px 0;border-bottom:1px dashed rgba(42,31,29,.2);font-size:.9rem}
+.t-item button{color:var(--gris);font-size:1.1rem;line-height:1;margin-left:8px}
+.t-fila{display:flex;justify-content:space-between;font-size:.86rem;color:var(--gris);margin-top:10px}
+.t-total{display:flex;justify-content:space-between;align-items:baseline;margin:16px 0 20px}
+.t-total b{font-family:'Cormorant Garamond',serif;font-size:2rem}
+.ticket .btn{width:100%}
+.ticket .nota{font-size:.76rem;color:var(--gris);margin-top:12px;text-align:center}
+.aviso{font-size:.82rem;color:#B3261E;min-height:1.2em;margin-top:10px;text-align:center}
+
+/* opiniones */
+.ops{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:44px}
+.op{background:var(--blanco);border-radius:var(--r);padding:30px}
+.op .est{color:var(--oro);letter-spacing:3px;margin-bottom:12px}
+.op p{font-family:'Cormorant Garamond',serif;font-size:1.3rem;line-height:1.35}
+.op span{display:block;margin-top:16px;font-size:.84rem;color:var(--gris)}
+
+/* visita */
+.visita{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}
+.horario{margin-top:28px}
+.horario div{display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px solid rgba(42,31,29,.12);font-size:.93rem}
+.horario .hoy{font-weight:700}
+.horario .hoy span:first-child::after{content:" · hoy";color:var(--oro);font-weight:600}
+.mapa{aspect-ratio:1;border-radius:var(--r);background:var(--arena);position:relative;overflow:hidden}
+.mapa svg{width:100%;height:100%}
+.pin{position:absolute;left:50%;top:48%;transform:translate(-50%,-100%);background:var(--tinta);color:var(--crema);padding:10px 16px;border-radius:14px;font-size:.84rem;font-weight:600;white-space:nowrap}
+.pin::after{content:"";position:absolute;left:50%;bottom:-6px;width:12px;height:12px;background:var(--tinta);transform:translateX(-50%) rotate(45deg)}
+
+/* faq */
+.faq{max-width:780px;margin:40px auto 0}
+.faq details{border-bottom:1px solid rgba(42,31,29,.14);padding:22px 0}
+.faq summary{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:20px}
+.faq summary::after{content:"+";color:var(--oro);transition:transform .3s}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq p{color:var(--gris);margin-top:10px}
+
+footer{background:var(--tinta);color:rgba(247,241,235,.7);padding:60px 0 40px;font-size:.88rem}
+footer .wrap{display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap}
+footer .logo{color:var(--crema)}
+.wa{position:fixed;right:22px;bottom:22px;z-index:40;width:58px;height:58px;border-radius:50%;background:#25D366;display:grid;place-items:center;box-shadow:0 14px 30px -10px rgba(37,211,102,.7);transition:transform .3s}
+.wa:hover{transform:scale(1.08)}
+.toast{position:fixed;left:50%;bottom:28px;transform:translate(-50%,120px);background:var(--tinta);color:var(--crema);padding:13px 22px;border-radius:999px;font-size:.88rem;z-index:60;transition:transform .45s cubic-bezier(.3,1.4,.5,1)}
+.toast.on{transform:translate(-50%,0)}
+
+@media (max-width:960px){
+  .menu{display:none}
+  .hero .wrap,.prob,.pasos,.visita{grid-template-columns:1fr}
+  .arco{max-width:420px;margin:0 auto;width:100%}
+  .f1{left:0}.f2{right:0}
+  .lista-serv{grid-template-columns:1fr}
+  .equipo{grid-template-columns:repeat(2,1fr)}
+  .ops{grid-template-columns:1fr}
+  .ticket{position:static}
+  section{padding:80px 0}
+}
+@media (max-width:520px){
+  .dias{grid-template-columns:repeat(4,1fr)}
+  .hero-datos{gap:20px}
+  .cita-btn span{display:none}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a href="#inicio" class="logo" id="logo">Nombre <span>del Salón</span></a>
+    <nav class="menu">
+      <a href="#servicios">Servicios</a>
+      <a href="#probador">Prueba tu look</a>
+      <a href="#equipo">Equipo</a>
+      <a href="#visita">Visítanos</a>
+    </nav>
+    <a href="#reserva" class="cita-btn"><span>Mi cita</span><b id="cuenta">0</b></a>
+  </div>
+</header>
+
+<section class="hero" id="inicio">
+  <div class="wrap">
+    <div>
+      <p class="eyebrow">Salón de belleza · <span class="ciudad">Tu ciudad</span></p>
+      <h1>Tu mejor versión <em>empieza aquí.</em></h1>
+      <p>Cabello, uñas, cejas, pestañas y spa en un solo lugar. Elige tus servicios, escoge tu hora y reserva por WhatsApp en menos de un minuto.</p>
+      <div class="hero-cta">
+        <a href="#servicios" class="btn btn-d">Reservar cita</a>
+        <a href="#probador" class="btn btn-l">Prueba tu look</a>
+      </div>
+      <div class="hero-datos">
+        <div><b>+8</b><span>años de experiencia</span></div>
+        <div><b>4.9</b><span>calificación de clientas</span></div>
+        <div><b>+3.000</b><span>citas atendidas</span></div>
+      </div>
+    </div>
+    <div style="position:relative">
+      <div class="arco rv">
+        <svg viewBox="0 0 400 500" aria-hidden="true">
+          <defs>
+            <linearGradient id="gp" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#5A3A2E"/><stop offset="1" stop-color="#2E1C16"/></linearGradient>
+            <linearGradient id="gs" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F3DCD2"/><stop offset="1" stop-color="#E7C4B6"/></linearGradient>
+          </defs>
+          <circle cx="330" cy="90" r="46" fill="#F7E7DF" opacity=".55"/>
+          <path d="M60 520 C70 400 120 350 200 345 C280 350 330 400 340 520Z" fill="#2A1F1D"/>
+          <path d="M175 300 L175 350 C175 365 225 365 225 350 L225 300Z" fill="url(#gs)"/>
+          <path d="M120 250 C95 150 150 70 215 72 C290 74 320 150 300 240 C295 300 318 370 345 430 C300 440 270 400 262 340 C250 380 250 420 230 440 C215 390 225 330 230 300Z" fill="url(#gp)"/>
+          <ellipse cx="200" cy="215" rx="68" ry="86" fill="url(#gs)"/>
+          <path d="M132 190 C140 110 230 95 272 150 C250 140 205 138 175 160 C160 175 142 190 132 210Z" fill="url(#gp)"/>
+          <path d="M170 215 q12 -8 24 0 M212 215 q12 -8 24 0" stroke="#2A1F1D" stroke-width="3" fill="none" stroke-linecap="round"/>
+          <path d="M188 262 q14 9 28 0" stroke="#B5655A" stroke-width="5" fill="none" stroke-linecap="round"/>
+          <circle cx="163" cy="240" r="10" fill="#E9A99A" opacity=".45"/><circle cx="240" cy="240" r="10" fill="#E9A99A" opacity=".45"/>
+          <g stroke="#FFF6F0" stroke-width="1.6" fill="none" opacity=".75">
+            <path d="M40 120 q30 -40 60 0 q-30 40 -60 0Z"/><path d="M70 100 v-40"/><path d="M352 300 q18 -30 36 0 q-18 30 -36 0Z"/>
+          </g>
+        </svg>
+      </div>
+      <div class="flota f1"><b>Próxima cita libre</b><i id="prox">Hoy · 3:30 p. m.</i></div>
+      <div class="flota f2"><b><i>★★★★★</i></b>“Salí feliz con mi color”</div>
+    </div>
+  </div>
+</section>
+
+<div class="cinta" aria-hidden="true"><div id="cinta"></div></div>
+
+<section id="servicios">
+  <div class="wrap">
+    <p class="eyebrow rv">Servicios</p>
+    <h2 class="rv">Elige lo que quieres <em>hacerte hoy</em></h2>
+    <p class="lead rv">Toca “Agregar” en uno o varios servicios. Sumamos el tiempo y el precio, y en el último paso eliges tu hora.</p>
+    <div class="tabs" id="tabs"></div>
+    <div class="lista-serv" id="lista"></div>
+  </div>
+</section>
+
+<section class="probador" id="probador">
+  <div class="wrap">
+    <p class="eyebrow rv">Prueba tu look</p>
+    <h2 class="rv">Juega con el corte y el color <em>antes de venir</em></h2>
+    <p class="lead rv">Elige un estilo y un tono para ver cómo se vería. Si te gusta, agrégalo a tu cita con un clic.</p>
+    <div class="prob">
+      <div class="lienzo rv">
+        <svg viewBox="0 0 400 400" id="modelo" aria-label="Vista previa del look">
+          <defs><linearGradient id="piel" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F3DCD2"/><stop offset="1" stop-color="#E5BFAF"/></linearGradient></defs>
+          <rect width="400" height="400" fill="#F4EAE3"/>
+          <circle cx="320" cy="80" r="40" fill="#EAD3C9"/>
+          <path id="pelo" fill="#3B2419"/>
+          <path d="M120 420 C130 330 160 300 200 298 C240 300 270 330 280 420Z" fill="#2A1F1D"/>
+          <path d="M182 250 L182 300 C182 312 218 312 218 300 L218 250Z" fill="url(#piel)"/>
+          <ellipse cx="200" cy="190" rx="58" ry="72" fill="url(#piel)"/>
+          <path id="fleco" fill="#3B2419"/>
+          <path id="mechas" fill="none" stroke-width="5" stroke-linecap="round" opacity="0"/>
+          <path d="M172 192 q10 -7 20 0 M208 192 q10 -7 20 0" stroke="#2A1F1D" stroke-width="3" fill="none" stroke-linecap="round"/>
+          <path d="M188 232 q12 8 24 0" stroke="#B5655A" stroke-width="4.5" fill="none" stroke-linecap="round"/>
+          <circle cx="168" cy="214" r="9" fill="#E9A99A" opacity=".4"/><circle cx="232" cy="214" r="9" fill="#E9A99A" opacity=".4"/>
+        </svg>
+        <span class="tag" id="tag-look">Largo · Castaño</span>
+      </div>
+      <div class="opc">
+        <h3>Corte</h3>
+        <div class="chips" id="cortes"></div>
+        <h3>Color</h3>
+        <div class="tonos" id="tonos"></div>
+        <h3>Técnica</h3>
+        <div class="chips" id="tecnicas"></div>
+        <div class="resumen-look">
+          <div><small>Tu look</small><b id="look-nombre">Largo castaño</b><small id="look-precio">Desde $0</small></div>
+          <button class="btn btn-d" id="agregar-look">Agregar a mi cita</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="equipo">
+  <div class="wrap">
+    <p class="eyebrow rv">Nuestro equipo</p>
+    <h2 class="rv">Manos expertas que <em>te escuchan</em></h2>
+    <div class="equipo" id="lista-equipo"></div>
+  </div>
+</section>
+
+<section class="reserva" id="reserva">
+  <div class="wrap">
+    <p class="eyebrow rv">Reserva</p>
+    <h2 class="rv">Tu cita en <em>tres pasos</em></h2>
+    <p class="lead rv">Te llega la solicitud por WhatsApp y te confirmamos la hora en minutos.</p>
+    <div class="pasos">
+      <div>
+        <div class="paso">
+          <h3><i>1</i> Con quién</h3>
+          <div class="estil" id="estilistas"></div>
+        </div>
+        <div class="paso">
+          <h3><i>2</i> Qué día</h3>
+          <div class="dias" id="dias"></div>
+        </div>
+        <div class="paso">
+          <h3><i>3</i> A qué hora</h3>
+          <div class="horas" id="horas"></div>
+        </div>
+        <div class="paso">
+          <h3><i>✓</i> Tus datos</h3>
+          <div class="campo"><label for="nom">Nombre</label><input id="nom" autocomplete="name" placeholder="¿Cómo te llamas?"></div>
+          <div class="campo"><label for="nota">Algo que debamos saber (opcional)</label><textarea id="nota" rows="2" placeholder="Ej: tengo el cabello decolorado, traigo foto de referencia…"></textarea></div>
+        </div>
+      </div>
+      <aside class="ticket">
+        <h3>Mi cita</h3>
+        <div id="items"><p class="vacio" style="color:var(--gris)">Aún no has elegido servicios.</p></div>
+        <div class="t-fila"><span>Duración aproximada</span><span id="dur">0 min</span></div>
+        <div class="t-fila"><span>Día y hora</span><span id="cuando">Por elegir</span></div>
+        <div class="t-total"><span>Total estimado</span><b id="total">$0</b></div>
+        <button class="btn btn-d" id="enviar">Pedir cita por WhatsApp</button>
+        <p class="aviso" id="aviso"></p>
+        <p class="nota">El precio final puede variar según el largo y el estado del cabello.</p>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <p class="eyebrow rv">Opiniones</p>
+    <h2 class="rv">Lo que dicen <em>nuestras clientas</em></h2>
+    <div class="ops">
+      <div class="op rv"><div class="est">★★★★★</div><p>“Llevaba años buscando quien entendiera mi cabello rizado. Aquí lo lograron a la primera.”</p><span>Nombre de clienta</span></div>
+      <div class="op rv"><div class="est">★★★★★</div><p>“Reservar por WhatsApp fue facilísimo y me atendieron puntual. Las uñas me duraron tres semanas.”</p><span>Nombre de clienta</span></div>
+      <div class="op rv"><div class="est">★★★★★</div><p>“El balayage quedó justo como en la foto. El ambiente es tranquilo y muy limpio.”</p><span>Nombre de clienta</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="visita" style="background:var(--arena)">
+  <div class="wrap visita">
+    <div>
+      <p class="eyebrow rv">Visítanos</p>
+      <h2 class="rv">Te esperamos con <em>un café</em></h2>
+      <p class="lead rv" id="direccion">Calle 00 #00-00, tu ciudad</p>
+      <div class="horario rv" id="horario"></div>
+    </div>
+    <div class="mapa rv">
+      <svg viewBox="0 0 400 400" aria-hidden="true">
+        <rect width="400" height="400" fill="#EFE4DA"/>
+        <g stroke="#FFFDFB" stroke-width="18" fill="none"><path d="M-10 120 H410"/><path d="M-10 280 H410"/><path d="M110 -10 V410"/><path d="M290 -10 V410"/></g>
+        <g stroke="#FFFDFB" stroke-width="6" fill="none" opacity=".8"><path d="M-10 200 C100 190 300 220 410 200"/><path d="M200 -10 V410"/></g>
+        <circle cx="330" cy="330" r="40" fill="#D8C8B8"/><rect x="30" y="300" width="50" height="60" rx="8" fill="#E2D2C5"/>
+        <circle cx="200" cy="200" r="16" fill="#B08D57"/><circle cx="200" cy="200" r="30" fill="#B08D57" opacity=".2"/>
+      </svg>
+      <span class="pin" id="pin">Nombre del Salón</span>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <p class="eyebrow rv" style="text-align:center">Preguntas</p>
+    <h2 class="rv" style="text-align:center">Antes de <em>venir</em></h2>
+    <div class="faq">
+      <details><summary>¿Cómo confirmo mi cita?</summary><p>Al enviar la solicitud por WhatsApp te respondemos confirmando la hora. Si ese horario ya se ocupó, te proponemos el más cercano.</p></details>
+      <details><summary>¿Puedo cancelar o cambiar la hora?</summary><p>Sí, avísanos por WhatsApp con al menos 3 horas de anticipación para darle el espacio a otra persona.</p></details>
+      <details><summary>¿Qué medios de pago reciben?</summary><p>Efectivo, tarjetas débito y crédito, Nequi y transferencia.</p></details>
+      <details><summary>¿El precio puede cambiar?</summary><p>Los precios de color y alisados dependen del largo y la cantidad de cabello. Te damos el valor exacto en el diagnóstico, antes de empezar.</p></details>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div><a class="logo" id="logo2">Nombre del Salón</a><p style="margin-top:8px">Belleza y cuidado · <span class="ciudad">Tu ciudad</span></p></div>
+    <div>
+      <p>Instagram · Facebook · TikTok</p>
+      <p style="margin-top:8px">© <span id="anio"></span> Todos los derechos reservados</p>
+    </div>
+  </div>
+</footer>
+
+<a class="wa" id="wa" href="#" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp">
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="#fff"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.4 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.4-.7-2.8-1.1-4.6-4-4.8-4.2-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.4.6-.4.4c-.1.1-.3.3-.1.6.1.3.7 1.1 1.4 1.8 1 .9 1.8 1.1 2 1.3.3.1.4.1.6-.1l.8-1c.2-.3.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.2.1.7-.1 1.5Z"/></svg>
+</a>
+<div class="toast" id="toast"></div>
+
+<script>
+/* ================= CONFIGURACIÓN ================= */
+const SALON = 'Nombre del Salón';
+const WHATSAPP = '573000000000';
+const CIUDAD = 'Tu ciudad';
+const DIRECCION = 'Calle 00 #00-00, tu ciudad';
+
+const HORARIO = {
+  1: ['09:00', '19:00'],
+  2: ['09:00', '19:00'],
+  3: ['09:00', '19:00'],
+  4: ['09:00', '19:00'],
+  5: ['09:00', '20:00'],
+  6: ['08:00', '18:00'],
+  0: null
+};
+const INTERVALO = 30;
+const DIAS_A_MOSTRAR = 14;
+
+const CATEGORIAS = ['Cabello', 'Color', 'Uñas', 'Cejas y pestañas', 'Maquillaje', 'Spa'];
+
+const SERVICIOS = [
+  { cat: 'Cabello', nombre: 'Corte de dama', min: 45, precio: 35000, desc: 'Lavado, corte y secado con cepillo.' },
+  { cat: 'Cabello', nombre: 'Corte de caballero', min: 30, precio: 22000, desc: 'Corte clásico o moderno con acabado.' },
+  { cat: 'Cabello', nombre: 'Cepillado', min: 40, precio: 28000, desc: 'Secado y cepillado liso o con ondas.' },
+  { cat: 'Cabello', nombre: 'Keratina', min: 150, precio: 180000, desc: 'Alisado con keratina, dura hasta 4 meses.' },
+  { cat: 'Cabello', nombre: 'Hidratación profunda', min: 50, precio: 60000, desc: 'Mascarilla y vapor para cabello seco.' },
+  { cat: 'Cabello', nombre: 'Peinado para evento', min: 60, precio: 70000, desc: 'Recogido, trenzas u ondas de fiesta.' },
+  { cat: 'Color', nombre: 'Tinte completo', min: 120, precio: 120000, desc: 'Color de raíz a puntas, incluye lavado.' },
+  { cat: 'Color', nombre: 'Retoque de raíz', min: 75, precio: 75000, desc: 'Solo el crecimiento, hasta 3 cm.' },
+  { cat: 'Color', nombre: 'Mechas', min: 150, precio: 190000, desc: 'Mechas con papel y matizado.' },
+  { cat: 'Color', nombre: 'Balayage', min: 180, precio: 260000, desc: 'Degradado natural pintado a mano.' },
+  { cat: 'Uñas', nombre: 'Manicure tradicional', min: 40, precio: 22000, desc: 'Limado, cutícula y esmalte.' },
+  { cat: 'Uñas', nombre: 'Manicure semipermanente', min: 60, precio: 45000, desc: 'Esmalte en gel que dura 3 semanas.' },
+  { cat: 'Uñas', nombre: 'Uñas acrílicas', min: 120, precio: 95000, desc: 'Extensión con diseño básico.' },
+  { cat: 'Uñas', nombre: 'Pedicure spa', min: 60, precio: 40000, desc: 'Exfoliación, masaje y esmalte.' },
+  { cat: 'Cejas y pestañas', nombre: 'Diseño de cejas', min: 30, precio: 25000, desc: 'Depilación con hilo o cera según tu rostro.' },
+  { cat: 'Cejas y pestañas', nombre: 'Laminado de cejas', min: 50, precio: 70000, desc: 'Cejas peinadas y definidas por semanas.' },
+  { cat: 'Cejas y pestañas', nombre: 'Lifting de pestañas', min: 60, precio: 80000, desc: 'Curvatura natural sin extensiones.' },
+  { cat: 'Cejas y pestañas', nombre: 'Extensiones pelo a pelo', min: 120, precio: 150000, desc: 'Volumen natural, primera aplicación.' },
+  { cat: 'Maquillaje', nombre: 'Maquillaje social', min: 60, precio: 90000, desc: 'Para fiestas, grados y eventos.' },
+  { cat: 'Maquillaje', nombre: 'Maquillaje de novia', min: 120, precio: 250000, desc: 'Incluye prueba previa y pestañas.' },
+  { cat: 'Spa', nombre: 'Limpieza facial', min: 70, precio: 95000, desc: 'Extracción, mascarilla e hidratación.' },
+  { cat: 'Spa', nombre: 'Masaje relajante', min: 60, precio: 110000, desc: 'Cuerpo completo con aceites tibios.' }
+];
+
+const EQUIPO = [
+  { nombre: 'Nombre 1', rol: 'Colorista', cats: ['Color', 'Cabello'], tono: ['#E6C3B9', '#C99A8A'] },
+  { nombre: 'Nombre 2', rol: 'Estilista', cats: ['Cabello', 'Maquillaje'], tono: ['#D9C7B8', '#B89F8C'] },
+  { nombre: 'Nombre 3', rol: 'Manicurista', cats: ['Uñas'], tono: ['#EAD3C9', '#D8AE9F'] },
+  { nombre: 'Nombre 4', rol: 'Cejas, pestañas y spa', cats: ['Cejas y pestañas', 'Spa'], tono: ['#E3CFC4', '#C4A393'] }
+];
+
+const LOOKS = {
+  cortes: [
+    { nombre: 'Largo', servicio: 'Corte de dama' },
+    { nombre: 'Bob', servicio: 'Corte de dama' },
+    { nombre: 'Pixie', servicio: 'Corte de dama' },
+    { nombre: 'Rizos', servicio: 'Hidratación profunda' }
+  ],
+  tonos: [
+    { nombre: 'Negro', color: '#1E1512' },
+    { nombre: 'Castaño', color: '#3B2419' },
+    { nombre: 'Chocolate', color: '#5A3522' },
+    { nombre: 'Cobrizo', color: '#9A4A26' },
+    { nombre: 'Miel', color: '#B07A3E' },
+    { nombre: 'Rubio', color: '#D8B06A' },
+    { nombre: 'Borgoña', color: '#6B1E2E' },
+    { nombre: 'Platino', color: '#E6DCCB' }
+  ],
+  tecnicas: [
+    { nombre: 'Color natural', servicio: null },
+    { nombre: 'Tinte completo', servicio: 'Tinte completo' },
+    { nombre: 'Mechas', servicio: 'Mechas' },
+    { nombre: 'Balayage', servicio: 'Balayage' }
+  ]
+};
+/* ================================================= */
+
+const $ = s => document.querySelector(s);
+const pesos = n => '$' + n.toLocaleString('es-CO');
+const dur = m => m >= 60 ? `${Math.floor(m / 60)} h${m % 60 ? ' ' + (m % 60) + ' min' : ''}` : `${m} min`;
+const hm = t => { const [h, m] = t.split(':').map(Number); return h * 60 + m; };
+const ampm = m => { const h = Math.floor(m / 60), mi = m % 60, h12 = ((h + 11) % 12) + 1; return `${h12}:${String(mi).padStart(2, '0')} ${h < 12 ? 'a. m.' : 'p. m.'}`; };
+const DSEM = ['Dom', 'Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb'];
+const DLARGO = ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];
+const MES = ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic'];
+
+const estado = { cita: [], estilista: 'Sin preferencia', dia: null, hora: null, cat: CATEGORIAS[0] };
+
+document.title = SALON + ' · Belleza y cuidado';
+const partes = SALON.split(' ');
+$('#logo').innerHTML = partes.length > 1 ? `${partes.slice(0, -2).join(' ') || partes[0]} <span>${partes.length > 2 ? partes.slice(-2).join(' ') : partes.slice(1).join(' ')}</span>` : SALON;
+$('#logo2').textContent = SALON;
+$('#pin').textContent = SALON;
+$('#direccion').textContent = DIRECCION;
+document.querySelectorAll('.ciudad').forEach(e => e.textContent = CIUDAD);
+$('#anio').textContent = new Date().getFullYear();
+$('#wa').href = `https://wa.me/${WHATSAPP}?text=${encodeURIComponent('Hola ' + SALON + ', quiero información.')}`;
+$('#cinta').innerHTML = Array(2).fill(CATEGORIAS.map(c => `${c}<span>✦</span>`).join('')).join('');
+
+function toast(t) { const e = $('#toast'); e.textContent = t; e.classList.add('on'); clearTimeout(e._t); e._t = setTimeout(() => e.classList.remove('on'), 2200); }
+
+/* servicios */
+function tabs() {
+  $('#tabs').innerHTML = CATEGORIAS.map(c => `<button class="tab ${c === estado.cat ? 'on' : ''}" data-c="${c}">${c}</button>`).join('');
+}
+function lista() {
+  $('#lista').innerHTML = SERVICIOS.filter(s => s.cat === estado.cat).map((s, i) => {
+    const on = estado.cita.some(x => x.nombre === s.nombre);
+    return `<div class="serv" style="animation-delay:${i * 50}ms"><h3>${s.nombre}</h3><div class="pr">${pesos(s.precio)}<small>${dur(s.min)}</small></div><p>${s.desc}</p><button class="${on ? 'on' : ''}" data-s="${s.nombre}">${on ? 'Agregado ✓' : 'Agregar'}</button></div>`;
+  }).join('');
+}
+$('#tabs').addEventListener('click', e => { const b = e.target.closest('.tab'); if (!b) return; estado.cat = b.dataset.c; tabs(); lista(); });
+$('#lista').addEventListener('click', e => { const b = e.target.closest('button[data-s]'); if (b) alternar(b.dataset.s); });
+
+function alternar(nombre, soloAgregar) {
+  const i = estado.cita.findIndex(x => x.nombre === nombre);
+  if (i >= 0) { if (soloAgregar) return false; estado.cita.splice(i, 1); toast('Servicio quitado'); }
+  else { const s = SERVICIOS.find(x => x.nombre === nombre); if (!s) return false; estado.cita.push({ ...s }); toast(nombre + ' agregado a tu cita'); }
+  estado.hora = null;
+  lista(); ticket(); horas();
+  return true;
+}
+
+/* probador */
+const FORMAS = {
+  Largo: { pelo: 'M126 175 C120 95 175 88 200 88 C230 88 282 95 274 175 C286 250 292 320 300 360 C268 372 240 350 236 300 L164 300 C160 350 132 372 100 360 C108 320 114 250 126 175Z', fleco: 'M138 170 C140 110 210 96 262 140 C240 128 205 126 178 146 C160 158 148 170 142 186Z', mechas: 'M150 150 C140 230 130 300 118 350 M250 150 C262 230 270 300 282 350 M175 110 C165 140 150 170 146 200' },
+  Bob: { pelo: 'M126 175 C118 100 170 86 200 86 C232 86 284 100 274 175 C280 205 282 238 272 258 C250 262 244 250 244 230 L156 230 C156 250 150 262 128 258 C118 238 120 205 126 175Z', fleco: 'M136 176 C134 116 190 96 238 110 C262 118 272 140 270 168 C250 146 222 138 196 142 C168 146 148 160 138 186Z', mechas: 'M150 140 C142 180 138 220 136 250 M250 140 C258 180 262 220 264 250' },
+  Pixie: { pelo: 'M134 176 C124 110 168 90 204 92 C244 94 280 116 268 176 C262 158 250 146 236 140 C214 132 182 134 160 146 C146 154 138 166 134 176Z', fleco: 'M140 168 C150 118 210 100 250 128 C232 124 200 130 178 144 C160 154 150 162 142 178Z', mechas: 'M170 110 C160 130 150 150 146 170 M232 108 C246 126 256 146 262 166' },
+  Rizos: { pelo: 'M120 180 C96 170 98 130 124 124 C120 96 150 78 176 88 C188 70 222 70 232 88 C262 80 288 100 280 128 C306 136 306 172 284 182 C310 196 306 236 282 244 C300 270 284 304 256 300 C250 322 222 330 206 316 L194 316 C178 330 150 322 144 300 C116 304 100 270 118 244 C94 236 90 196 120 180Z', fleco: 'M140 170 C136 132 166 110 190 120 C200 104 230 106 238 124 C258 120 272 140 264 164 C248 146 220 142 198 146 C170 150 152 160 142 180Z', mechas: 'M140 150 q10 20 0 40 q-10 20 0 40 M260 150 q10 20 0 40 q-10 20 0 40 M200 96 q12 10 0 22' }
+};
+const look = { corte: 'Largo', tono: LOOKS.tonos[1], tecnica: LOOKS.tecnicas[0] };
+function mezclar(h, p) { const a = parseInt(h.slice(1), 16), r = (a >> 16) + (255 - (a >> 16)) * p, g = ((a >> 8) & 255) + (255 - ((a >> 8) & 255)) * p, b = (a & 255) + (255 - (a & 255)) * p; return `rgb(${r | 0},${g | 0},${b | 0})`; }
+function pintar() {
+  const f = FORMAS[look.corte], t = look.tecnica.nombre, c = look.tono.color;
+  const base = t === 'Balayage' || t === 'Mechas' ? LOOKS.tonos[1].color : c;
+  $('#pelo').setAttribute('d', f.pelo); $('#fleco').setAttribute('d', f.fleco); $('#mechas').setAttribute('d', f.mechas);
+  const fill = t === 'Balayage' ? 'url(#degr)' : base;
+  let defs = $('#modelo defs');
+  let g = $('#degr');
+  if (!g) { g = document.createElementNS('http://www.w3.org/2000/svg', 'linearGradient'); g.id = 'degr'; g.setAttribute('x1', 0); g.setAttribute('y1', 0); g.setAttribute('x2', 0); g.setAttribute('y2', 1); g.innerHTML = '<stop offset=".25"/><stop offset="1"/>'; defs.appendChild(g); }
+  g.children[0].setAttribute('stop-color', LOOKS.tonos[1].color); g.children[1].setAttribute('stop-color', c);
+  $('#pelo').setAttribute('fill', fill); $('#fleco').setAttribute('fill', t === 'Balayage' ? LOOKS.tonos[1].color : base);
+  const m = $('#mechas'); m.setAttribute('stroke', mezclar(c, .15)); m.style.opacity = t === 'Mechas' ? .9 : 0;
+  const nom = `${look.corte} ${look.tono.nombre.toLowerCase()}${t !== 'Color natural' ? ' · ' + t.toLowerCase() : ''}`;
+  $('#tag-look').textContent = `${look.corte} · ${look.tono.nombre}${t !== 'Color natural' ? ' · ' + t : ''}`;
+  $('#look-nombre').textContent = nom.charAt(0).toUpperCase() + nom.slice(1);
+  const serv = serviciosLook();
+  $('#look-precio').textContent = serv.length ? `Desde ${pesos(serv.reduce((a, s) => a + s.precio, 0))} · ${dur(serv.reduce((a, s) => a + s.min, 0))}` : '';
+  $('#cortes').innerHTML = LOOKS.cortes.map(x => `<button class="chip ${x.nombre === look.corte ? 'on' : ''}" data-v="${x.nombre}">${x.nombre}</button>`).join('');
+  $('#tonos').innerHTML = LOOKS.tonos.map((x, i) => `<button class="tono ${x === look.tono ? 'on' : ''}" style="background:${x.color}" data-i="${i}" title="${x.nombre}" aria-label="${x.nombre}"></button>`).join('');
+  $('#tecnicas').innerHTML = LOOKS.tecnicas.map((x, i) => `<button class="chip ${x === look.tecnica ? 'on' : ''}" data-i="${i}">${x.nombre}</button>`).join('');
+}
+function serviciosLook() {
+  const n = [LOOKS.cortes.find(x => x.nombre === look.corte).servicio, look.tecnica.servicio].filter(Boolean);
+  return n.map(x => SERVICIOS.find(s => s.nombre === x)).filter(Boolean);
+}
+$('#cortes').addEventListener('click', e => { const b = e.target.closest('.chip'); if (b) { look.corte = b.dataset.v; pintar(); } });
+$('#tonos').addEventListener('click', e => { const b = e.target.closest('.tono'); if (b) { look.tono = LOOKS.tonos[b.dataset.i]; if (look.tecnica.nombre === 'Color natural' && b.dataset.i != 1) look.tecnica = LOOKS.tecnicas[1]; pintar(); } });
+$('#tecnicas').addEventListener('click', e => { const b = e.target.closest('.chip'); if (b) { look.tecnica = LOOKS.tecnicas[b.dataset.i]; pintar(); } });
+$('#agregar-look').addEventListener('click', () => {
+  const s = serviciosLook(); let n = 0;
+  s.forEach(x => { if (alternar(x.nombre, true)) n++; });
+  estado.look = $('#look-nombre').textContent;
+  toast(n ? 'Look agregado a tu cita' : 'Ese look ya está en tu cita');
+  ticket();
+});
+
+/* equipo */
+$('#lista-equipo').innerHTML = EQUIPO.map((p, i) => `<div class="pers rv"><div class="av"><svg viewBox="0 0 300 400"><defs><linearGradient id="e${i}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${p.tono[0]}"/><stop offset="1" stop-color="${p.tono[1]}"/></linearGradient></defs><rect width="300" height="400" fill="url(#e${i})"/><path d="M50 420 C60 320 100 290 150 288 C200 290 240 320 250 420Z" fill="#2A1F1D"/><path d="M134 240 L134 292 C134 304 166 304 166 292 L166 240Z" fill="#F1D8CD"/><path d="${['M88 170 C80 90 130 70 150 70 C180 70 226 88 214 170 C222 240 226 300 232 330 C204 336 190 300 188 260 L112 260 C110 300 96 336 68 330 C76 300 82 240 88 170Z', 'M92 170 C86 100 128 76 152 76 C184 76 218 100 210 170 C214 200 214 226 206 244 C190 246 186 236 186 220 L114 220 C114 236 110 246 94 244 C86 226 86 200 92 170Z', 'M84 176 C70 168 72 136 94 132 C92 106 118 92 138 100 C148 86 172 86 180 100 C204 94 226 110 220 134 C240 140 240 170 222 178 C240 196 232 226 212 230 C214 250 190 262 176 250 L124 250 C110 262 86 250 88 230 C68 226 60 196 84 176Z', 'M96 170 C88 110 130 84 156 86 C190 88 218 108 206 170 C200 152 190 142 178 138 C158 132 130 134 112 146 C102 154 98 162 96 170Z'][i % 4]}" fill="${['#3B2419', '#1E1512', '#5A3522', '#9A4A26'][i % 4]}"/><ellipse cx="150" cy="178" rx="50" ry="62" fill="#F3DCD2"/><path d="M126 182 q8 -6 16 0 M158 182 q8 -6 16 0" stroke="#2A1F1D" stroke-width="2.6" fill="none" stroke-linecap="round"/><path d="M140 214 q10 7 20 0" stroke="#B5655A" stroke-width="4" fill="none" stroke-linecap="round"/></svg></div><h3>${p.nombre}</h3><p>${p.rol}</p></div>`).join('');
+
+/* reserva */
+function estilistas() {
+  const ops = ['Sin preferencia', ...EQUIPO.map(p => p.nombre)];
+  $('#estilistas').innerHTML = ops.map(n => { const p = EQUIPO.find(x => x.nombre === n); return `<button class="chip ${n === estado.estilista ? 'on' : ''}" data-n="${n}">${n}${p ? ' · ' + p.rol : ''}</button>`; }).join('');
+}
+$('#estilistas').addEventListener('click', e => { const b = e.target.closest('.chip'); if (b) { estado.estilista = b.dataset.n; estilistas(); ticket(); } });
+
+const hoy = new Date(); hoy.setHours(0, 0, 0, 0);
+const DIAS = Array.from({ length: DIAS_A_MOSTRAR }, (_, i) => { const d = new Date(hoy); d.setDate(d.getDate() + i); return d; });
+function dias() {
+  $('#dias').innerHTML = DIAS.map((d, i) => { const ab = HORARIO[d.getDay()]; return `<button class="dia ${estado.dia === i ? 'on' : ''}" data-i="${i}" ${ab ? '' : 'disabled'}>${i === 0 ? 'Hoy' : DSEM[d.getDay()]}<b>${d.getDate()}</b>${MES[d.getMonth()]}</button>`; }).join('');
+}
+function totalMin() { return estado.cita.reduce((a, s) => a + s.min, 0); }
+function slots(i) {
+  const d = DIAS[i], h = HORARIO[d.getDay()]; if (!h) return [];
+  const ini = hm(h[0]), fin = hm(h[1]), m = Math.max(totalMin(), INTERVALO), out = [];
+  const ahora = new Date(), minAhora = i === 0 ? ahora.getHours() * 60 + ahora.getMinutes() + 60 : 0;
+  for (let t = ini; t + m <= fin; t += INTERVALO) if (t >= minAhora) out.push(t);
+  return out;
+}
+function horas() {
+  if (estado.dia === null) { $('#horas').innerHTML = '<p class="vacio">Primero elige un día.</p>'; return; }
+  const s = slots(estado.dia);
+  $('#horas').innerHTML = s.length ? s.map(t => `<button class="hora ${estado.hora === t ? 'on' : ''}" data-t="${t}">${ampm(t).replace(' a. m.', ' am').replace(' p. m.', ' pm')}</button>`).join('') : '<p class="vacio">No quedan horas para este día con la duración elegida. Prueba otro día.</p>';
+}
+$('#dias').addEventListener('click', e => { const b = e.target.closest('.dia'); if (!b || b.disabled) return; estado.dia = +b.dataset.i; estado.hora = null; dias(); horas(); ticket(); });
+$('#horas').addEventListener('click', e => { const b = e.target.closest('.hora'); if (!b) return; estado.hora = +b.dataset.t; horas(); ticket(); });
+
+function ticket() {
+  $('#cuenta').textContent = estado.cita.length;
+  $('#items').innerHTML = estado.cita.length ? estado.cita.map(s => `<div class="t-item"><span>${s.nombre}</span><span>${pesos(s.precio)}<button data-q="${s.nombre}" aria-label="Quitar">×</button></span></div>`).join('') : '<p class="vacio" style="color:var(--gris)">Aún no has elegido servicios.</p>';
+  $('#dur').textContent = dur(totalMin());
+  $('#total').textContent = pesos(estado.cita.reduce((a, s) => a + s.precio, 0));
+  $('#cuando').textContent = estado.dia !== null && estado.hora !== null ? `${DSEM[DIAS[estado.dia].getDay()]} ${DIAS[estado.dia].getDate()} ${MES[DIAS[estado.dia].getMonth()]} · ${ampm(estado.hora)}` : 'Por elegir';
+  $('#aviso').textContent = '';
+}
+$('#items').addEventListener('click', e => { const b = e.target.closest('button[data-q]'); if (b) alternar(b.dataset.q); });
+
+$('#enviar').addEventListener('click', () => {
+  const nom = $('#nom').value.trim();
+  const falta = !estado.cita.length ? 'Agrega al menos un servicio.' : estado.dia === null ? 'Elige el día.' : estado.hora === null ? 'Elige la hora.' : !nom ? 'Escribe tu nombre.' : '';
+  if (falta) { $('#aviso').textContent = falta; return; }
+  const d = DIAS[estado.dia];
+  const txt = [`Hola ${SALON} 👋, quiero reservar una cita:`, '',
+    ...estado.cita.map(s => `• ${s.nombre} — ${pesos(s.precio)}`), '',
+    estado.look ? `Look elegido: ${estado.look}` : '',
+    `📅 ${DLARGO[d.getDay()]} ${d.getDate()} de ${MES[d.getMonth()]} a las ${ampm(estado.hora)}`,
+    `⏱ Duración aprox.: ${dur(totalMin())}`,
+    `💇 Con: ${estado.estilista}`,
+    `💰 Total estimado: ${pesos(estado.cita.reduce((a, s) => a + s.precio, 0))}`,
+    `🙋 Nombre: ${nom}`,
+    $('#nota').value.trim() ? `📝 Nota: ${$('#nota').value.trim()}` : ''].filter((l, i, a) => l !== '' || a[i - 1] !== '').join('\n');
+  window.open(`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(txt)}`, '_blank');
+});
+
+/* horario */
+function horario() {
+  const orden = [1, 2, 3, 4, 5, 6, 0];
+  $('#horario').innerHTML = orden.map(d => `<div class="${d === new Date().getDay() ? 'hoy' : ''}"><span>${DLARGO[d]}</span><span>${HORARIO[d] ? ampm(hm(HORARIO[d][0])) + ' – ' + ampm(hm(HORARIO[d][1])) : 'Cerrado'}</span></div>`).join('');
+  for (let i = 0; i < DIAS.length; i++) { const s = slots(i); if (s.length) { $('#prox').textContent = `${i === 0 ? 'Hoy' : i === 1 ? 'Mañana' : DLARGO[DIAS[i].getDay()]} · ${ampm(s[0])}`; break; } }
+}
+
+tabs(); lista(); pintar(); estilistas(); dias(); horas(); ticket(); horario();
+
+addEventListener('scroll', () => $('#nav').classList.toggle('s', scrollY > 30), { passive: true });
+const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: .12 });
+document.querySelectorAll('.rv').forEach(e => io.observe(e));
+</script>
+</body>
+</html>

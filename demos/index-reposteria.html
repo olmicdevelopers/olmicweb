@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Repostería artesanal — tortas, cupcakes, galletas y postres por encargo.">
+<meta name="theme-color" content="#FFF6EC">
+<title>Nombre de la Repostería — Hecho a mano</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --crema:#FFF6EC;--crema2:#FBE9D7;--fresa:#F07A8E;--fresa2:#FBD3D9;--pista:#9CC9A1;--pista2:#DCEEDB;
+  --choco:#4A2C24;--cacao:#7A5244;--miel:#F2B84B;--linea:rgba(74,44,36,.14);
+  --serif:"Young Serif",Georgia,serif;--texto:"Nunito","Helvetica Neue",Arial,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;overflow-x:hidden;overflow-x:clip}
+body{background:var(--crema);color:var(--choco);font-family:var(--texto);font-size:16.5px;line-height:1.6;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;color:inherit}
+.wrap{width:min(1180px,92vw);margin:0 auto}
+[hidden]{display:none!important}
+h1,h2,h3{font-family:var(--serif);font-weight:400;line-height:1.05;letter-spacing:-.01em}
+.nav{position:sticky;top:0;z-index:50;background:rgba(255,246,236,.9);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:74px;gap:16px}
+.marca{display:flex;align-items:center;gap:10px;font-family:var(--serif);font-size:1.45rem}
+.marca svg{width:34px;height:34px;flex:none}
+.menu{display:flex;gap:26px;font-weight:700;font-size:.95rem}
+.menu a{padding:6px 2px;border-bottom:2px dashed transparent;transition:border-color .3s}
+.menu a:hover{border-color:var(--fresa)}
+.acc-nav{display:flex;gap:8px;align-items:center}
+.caja-btn{display:flex;align-items:center;gap:8px;border:2px solid var(--choco);border-radius:999px;padding:9px 16px;background:#fff;font-weight:800;font-size:.9rem;cursor:pointer;transition:transform .3s cubic-bezier(.34,1.56,.64,1)}
+.caja-btn:hover{transform:rotate(-3deg) scale(1.04)}
+.caja-btn b{background:var(--fresa);color:#fff;border-radius:99px;min-width:22px;height:22px;display:grid;place-items:center;font-size:.75rem;padding:0 6px}
+.burger{display:none;border:2px solid var(--choco);background:#fff;border-radius:50%;width:44px;height:44px;cursor:pointer}
+.goteo{display:block;width:100%;height:26px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;border:2px solid var(--choco);border-radius:999px;padding:14px 26px;font-weight:800;font-size:.95rem;cursor:pointer;background:var(--choco);color:var(--crema);box-shadow:0 5px 0 var(--cacao);transition:transform .2s,box-shadow .2s}
+.btn:hover{transform:translateY(2px);box-shadow:0 3px 0 var(--cacao)}
+.btn:active{transform:translateY(5px);box-shadow:0 0 0 var(--cacao)}
+.btn.claro{background:#fff;color:var(--choco);box-shadow:0 5px 0 var(--choco)}
+.btn.claro:hover{box-shadow:0 3px 0 var(--choco)}
+.btn.fresa{background:var(--fresa);color:#fff;box-shadow:0 5px 0 var(--choco)}
+.btn.fresa:hover{box-shadow:0 3px 0 var(--choco)}
+.hero{position:relative;padding:40px 0 70px;overflow:hidden}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:40px;align-items:center}
+.pill{display:inline-flex;align-items:center;gap:8px;background:var(--pista2);border:2px solid var(--choco);border-radius:999px;padding:6px 14px;font-weight:800;font-size:.82rem}
+h1{font-size:clamp(3rem,7.4vw,6rem);margin:20px 0 30px}
+h1 .ondu{color:var(--fresa);position:relative;white-space:nowrap}
+h1 .ondu svg{position:absolute;left:0;right:0;bottom:-10px;width:100%;height:14px}
+.hero p{font-size:1.12rem;max-width:42ch;color:var(--cacao)}
+.hero .acc{display:flex;gap:14px;flex-wrap:wrap;margin-top:30px}
+.escena{position:relative;aspect-ratio:1;max-width:520px;width:100%;justify-self:center}
+.plato{position:absolute;inset:8%;border-radius:50%;background:radial-gradient(circle at 50% 45%,#fff 0 56%,var(--fresa2) 57% 63%,#fff 64% 100%);border:3px solid var(--choco)}
+.flota{position:absolute;animation:flota 5s ease-in-out infinite;filter:drop-shadow(0 12px 10px rgba(74,44,36,.18))}
+.flota:nth-of-type(2){animation-delay:-1.2s}.flota:nth-of-type(3){animation-delay:-2.4s}.flota:nth-of-type(4){animation-delay:-3.6s}
+@keyframes flota{0%,100%{transform:translateY(0) rotate(var(--r,0deg))}50%{transform:translateY(-14px) rotate(calc(var(--r,0deg) + 4deg))}}
+.sticker{position:absolute;right:0;top:2%;z-index:3;width:118px;height:118px;border-radius:50%;background:var(--miel);border:3px solid var(--choco);display:grid;place-items:center;text-align:center;font-family:var(--serif);font-size:1.15rem;line-height:1.05;animation:gira 14s linear infinite}
+@keyframes gira{to{transform:rotate(360deg)}}
+.sticker small{display:block;font-family:var(--texto);font-weight:800;font-size:.62rem;letter-spacing:.1em;margin:3px 0}
+.onda{display:block;width:100%;height:60px}
+section{padding:80px 0;scroll-margin-top:80px}
+.cab{text-align:center;max-width:640px;margin:0 auto 42px}
+.cab .pill{margin-bottom:14px}
+.cab h2{font-size:clamp(2.4rem,5vw,3.8rem)}
+.cab p{color:var(--cacao);margin-top:12px}
+.vitrina{background:var(--crema2)}
+.tabs{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:34px}
+.tab{border:2px solid var(--choco);background:#fff;border-radius:999px;padding:9px 18px;font-weight:800;font-size:.9rem;cursor:pointer;transition:all .25s}
+.tab.on{background:var(--choco);color:var(--crema)}
+.tab:hover{transform:translateY(-2px)}
+.prods{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(240px,100%),1fr));gap:22px}
+.prod{background:#fff;border:2px solid var(--choco);border-radius:28px;padding:14px;display:flex;flex-direction:column;transition:transform .35s cubic-bezier(.34,1.56,.64,1),box-shadow .35s;animation:entra .5s ease backwards}
+@keyframes entra{from{opacity:0;transform:translateY(14px) scale(.98)}}
+.prod:hover{transform:translateY(-6px) rotate(-.6deg);box-shadow:0 10px 0 var(--choco)}
+.ilu{border-radius:20px;aspect-ratio:1/.82;display:grid;place-items:center;position:relative;overflow:hidden}
+.ilu svg{width:62%;height:auto;transition:transform .5s cubic-bezier(.34,1.56,.64,1)}
+.prod:hover .ilu svg{transform:scale(1.08) rotate(-4deg)}
+.eti{position:absolute;top:10px;left:10px;background:#fff;border:2px solid var(--choco);border-radius:99px;font-size:.72rem;font-weight:800;padding:3px 10px}
+.prod h3{font-size:1.3rem;margin:14px 4px 4px}
+.prod p{font-size:.88rem;color:var(--cacao);margin:0 4px;flex:1}
+.pie-prod{display:flex;justify-content:space-between;align-items:center;margin:14px 4px 2px}
+.pie-prod b{font-family:var(--serif);font-weight:400;font-size:1.35rem}
+.mas{width:42px;height:42px;border-radius:50%;border:2px solid var(--choco);background:var(--fresa);color:#fff;font-size:1.4rem;font-weight:800;cursor:pointer;display:grid;place-items:center;transition:transform .3s cubic-bezier(.34,1.56,.64,1)}
+.mas:hover{transform:rotate(90deg) scale(1.08)}
+.mas.ok{background:var(--pista)}
+.armador{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:start}
+.preview{position:sticky;top:96px;background:#fff;border:2px solid var(--choco);border-radius:32px;padding:26px;text-align:center}
+.preview svg{width:100%;max-width:400px;height:auto}
+.preview .total{font-family:var(--serif);font-size:2.6rem;margin-top:6px}
+.preview .det{color:var(--cacao);font-size:.9rem}
+.opciones{display:grid;gap:22px}
+.grupo h3{font-size:1.3rem;margin-bottom:10px;display:flex;align-items:center;gap:10px}
+.grupo h3 span{width:28px;height:28px;border-radius:50%;background:var(--fresa);color:#fff;font-family:var(--texto);font-weight:800;font-size:.85rem;display:grid;place-items:center;border:2px solid var(--choco)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{border:2px solid var(--choco);background:#fff;border-radius:16px;padding:10px 14px;cursor:pointer;font-weight:700;font-size:.9rem;display:flex;align-items:center;gap:8px;transition:all .2s}
+.chip i{width:18px;height:18px;border-radius:50%;border:2px solid var(--choco);display:block}
+.chip small{color:var(--cacao);font-weight:600}
+.chip.on{background:var(--choco);color:var(--crema)}
+.chip.on small{color:var(--fresa2)}
+.chip:hover{transform:translateY(-2px)}
+.campo input{width:100%;border:2px solid var(--choco);border-radius:16px;padding:12px 14px;font-family:inherit;font-size:1rem;background:#fff;color:var(--choco)}
+.campo input:focus{outline:none;border-color:var(--fresa)}
+.nota{font-size:.82rem;color:var(--cacao);margin-top:6px}
+.dos-btn{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.visita{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.tarjeta{background:#fff;border:2px solid var(--choco);border-radius:28px;padding:28px}
+.tarjeta h3{font-size:1.5rem;margin-bottom:10px}
+.tarjeta p,.tarjeta li{color:var(--cacao)}
+.tarjeta ul{list-style:none}
+.tarjeta li{display:flex;justify-content:space-between;gap:10px;padding:6px 0;border-bottom:1px dashed var(--linea)}
+.tarjeta li b{color:var(--choco)}
+.tarjeta.fresa{background:var(--fresa);color:#fff}
+.tarjeta.fresa p{color:#fff}
+footer{background:var(--choco);color:var(--crema);padding:40px 0 34px;margin-top:40px}
+.pie{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-weight:700;font-size:.9rem}
+.velo{position:fixed;inset:0;z-index:90;background:rgba(74,44,36,.35);opacity:0;visibility:hidden;transition:opacity .35s,visibility .35s}
+.velo.on{opacity:1;visibility:visible}
+.caja{position:fixed;top:14px;right:14px;bottom:14px;width:min(400px,calc(100vw - 28px));z-index:95;background:var(--crema);border:2px solid var(--choco);border-radius:30px;display:flex;flex-direction:column;transform:translateX(115%);transition:transform .5s cubic-bezier(.34,1.3,.64,1)}
+.caja.on{transform:none}
+.cj-cab{display:flex;justify-content:space-between;align-items:center;padding:20px 22px;border-bottom:2px dashed var(--linea)}
+.cj-cab h3{font-size:1.7rem}
+.x{width:40px;height:40px;border-radius:50%;border:2px solid var(--choco);background:#fff;cursor:pointer;font-size:1.2rem;font-weight:800}
+.cj-lista{flex:1;overflow:auto;padding:8px 22px}
+.it{display:grid;grid-template-columns:54px 1fr auto;gap:12px;align-items:center;padding:12px 0;border-bottom:1px dashed var(--linea)}
+.it .mini{width:54px;height:54px;border-radius:14px;display:grid;place-items:center;border:2px solid var(--choco)}
+.it .mini svg{width:70%}
+.it b{display:block;font-size:.92rem}
+.it small{color:var(--cacao)}
+.cant{display:flex;align-items:center;gap:6px}
+.cant button{width:28px;height:28px;border-radius:50%;border:2px solid var(--choco);background:#fff;cursor:pointer;font-weight:800}
+.vacia{text-align:center;color:var(--cacao);padding:50px 10px}
+.cj-pie{padding:18px 22px;border-top:2px dashed var(--linea);display:grid;gap:12px}
+.tot{display:flex;justify-content:space-between;font-family:var(--serif);font-size:1.6rem}
+.rv{opacity:0;transform:translateY(26px);transition:opacity .8s ease,transform .8s cubic-bezier(.34,1.3,.64,1)}
+.rv.on{opacity:1;transform:none}
+:focus-visible{outline:3px solid var(--fresa);outline-offset:3px}
+@media (max-width:920px){
+  .menu{display:none;position:absolute;top:100%;left:4vw;right:4vw;flex-direction:column;gap:0;background:#fff;border:2px solid var(--choco);border-radius:22px;padding:6px 18px}
+  .menu.on{display:flex}.menu a{padding:12px 0;border-bottom:1px dashed var(--linea)}.menu a:last-child{border:0}
+  .burger{display:grid;place-items:center}
+  .hero-grid,.armador{grid-template-columns:1fr}
+  .escena{max-width:380px}.preview{position:static}.visita{grid-template-columns:1fr}
+}
+@media (max-width:560px){.caja-btn span{display:none}.sticker{width:92px;height:92px;font-size:.95rem}.marca{font-size:1.15rem}.dos-btn{grid-template-columns:1fr}.btn{padding:13px 18px}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}.rv{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="marca" href="#top"><svg viewBox="0 0 40 40"><path d="M8 22h24l-3 13H11Z" fill="#F07A8E" stroke="#4A2C24" stroke-width="2.4" stroke-linejoin="round"/><path d="M7 22c0-7 6-12 13-12s13 5 13 12c-2 2-4 2-6 0-2 2-5 2-7 0-2 2-5 2-7 0-2 2-4 2-6 0Z" fill="#FFF6EC" stroke="#4A2C24" stroke-width="2.4" stroke-linejoin="round"/><circle cx="20" cy="8" r="3" fill="#F07A8E" stroke="#4A2C24" stroke-width="2"/></svg><span id="n-marca"></span></a>
+    <nav class="menu" id="menu"><a href="#vitrina">Vitrina</a><a href="#armador">Arma tu torta</a><a href="#visita">Visítanos</a></nav>
+    <div class="acc-nav">
+      <button class="caja-btn" id="abrir-caja" aria-label="Ver mi caja"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"><path d="M3 9h18v11H3Z"/><path d="M3 9l3-5h12l3 5M12 9v11"/></svg><span>Mi caja</span><b id="cuenta">0</b></button>
+      <button class="burger" id="burger" aria-label="Abrir menú" aria-expanded="false"><svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M3 7h14M3 13h14"/></svg></button>
+    </div>
+  </div>
+  <svg class="goteo" viewBox="0 0 1440 26" preserveAspectRatio="none" aria-hidden="true"><path id="gotas" fill="#FBD3D9"/></svg>
+</header>
+
+<div class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div class="rv">
+      <span class="pill">🍓 Horneado cada mañana</span>
+      <h1>Dulces hechos<br><span class="ondu">con calma<svg viewBox="0 0 200 14" preserveAspectRatio="none"><path d="M2 8c20-8 30 6 50 0s30-8 50 0 30 6 50 0 30-6 46 0" fill="none" stroke="#F07A8E" stroke-width="4" stroke-linecap="round"/></svg></span></h1>
+      <p>Tortas por encargo, cupcakes, galletas y postres hechos a mano con ingredientes de verdad. Arma tu pedido y te lo confirmamos por WhatsApp.</p>
+      <div class="acc"><a class="btn fresa" href="#armador">Arma tu torta</a><a class="btn claro" href="#vitrina">Ver la vitrina</a></div>
+    </div>
+    <div class="escena rv" id="escena">
+      <div class="plato"></div>
+      <div class="sticker"><div><small>DESDE</small>1998<small>A MANO</small></div></div>
+    </div>
+  </div>
+</div>
+
+<svg class="onda" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true"><path d="M0 30c120-30 240 30 360 0s240-30 360 0 240 30 360 0 240-30 360 0v30H0Z" fill="#FBE9D7"/></svg>
+<section class="vitrina" id="vitrina">
+  <div class="wrap">
+    <div class="cab rv"><span class="pill">🧁 La vitrina</span><h2>Hoy en el mostrador</h2><p>Toca el más para agregarlo a tu caja. Al final nos envías el pedido por WhatsApp.</p></div>
+    <div class="tabs rv" id="tabs"></div>
+    <div class="prods" id="prods"></div>
+  </div>
+</section>
+<svg class="onda" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true" style="transform:scaleY(-1)"><path d="M0 30c120-30 240 30 360 0s240-30 360 0 240 30 360 0 240-30 360 0v30H0Z" fill="#FBE9D7"/></svg>
+
+<section id="armador">
+  <div class="wrap">
+    <div class="cab rv"><span class="pill">🎂 Por encargo</span><h2>Arma tu torta</h2><p>Elige cada detalle y mírala tomar forma. El precio se calcula mientras eliges.</p></div>
+    <div class="armador">
+      <div class="preview rv">
+        <svg id="torta" viewBox="0 0 400 340" role="img" aria-label="Vista previa de tu torta"></svg>
+        <div class="total" id="t-total">$0</div>
+        <div class="det" id="t-det"></div>
+      </div>
+      <div class="opciones rv" id="opciones"></div>
+    </div>
+  </div>
+</section>
+
+<section id="visita" style="padding-top:20px">
+  <div class="wrap">
+    <div class="cab rv"><span class="pill">📍 Visítanos</span><h2>Te esperamos con café</h2></div>
+    <div class="visita rv">
+      <div class="tarjeta"><h3>Horario</h3><ul id="horario"></ul></div>
+      <div class="tarjeta"><h3>Dónde estamos</h3><p id="dir"></p><p style="margin-top:12px" id="anticip"></p></div>
+      <div class="tarjeta fresa"><h3>¿Un pedido especial?</h3><p>Bodas, cumpleaños, empresas o mesas de postres. Cuéntanos tu idea.</p><a class="btn claro" id="wa-esp" target="_blank" rel="noopener noreferrer" href="#" style="margin-top:18px">Escríbenos</a></div>
+    </div>
+  </div>
+</section>
+
+<footer><div class="wrap pie"><span>© <span id="anio"></span> <span class="n-rep"></span> · Hecho a mano</span><span><a href="#" target="_blank" rel="noopener noreferrer">Instagram</a> · <a href="#" target="_blank" rel="noopener noreferrer">TikTok</a> · <a href="#" target="_blank" rel="noopener noreferrer">Facebook</a></span></div></footer>
+
+<div class="velo" id="velo"></div>
+<aside class="caja" id="caja" role="dialog" aria-modal="true" aria-labelledby="cj-t">
+  <div class="cj-cab"><h3 id="cj-t">Mi caja</h3><button class="x" id="cj-x" aria-label="Cerrar">×</button></div>
+  <div class="cj-lista" id="cj-lista"></div>
+  <div class="cj-pie"><div class="tot"><span>Total</span><span id="cj-tot">$0</span></div><button class="btn fresa" id="cj-pedir">Pedir por WhatsApp</button></div>
+</aside>
+
+<script>
+/* ===================== CONFIGURACIÓN ===================== */
+
+const REPOSTERIA = 'Nombre de la Repostería';
+const WHATSAPP = '573000000000';
+const DIRECCION = 'Calle 00 #00-00, tu ciudad';
+const DIAS_ANTICIPACION = 3;
+
+const HORARIO = [['Lunes a viernes', '7:00 – 19:00'], ['Sábados', '8:00 – 20:00'], ['Domingos', '9:00 – 14:00']];
+
+const CATEGORIAS = ['Tortas', 'Cupcakes', 'Galletas', 'Postres', 'Panes'];
+
+const PRODUCTOS = [
+  { nombre: 'Tajada de red velvet',     categoria: 'Tortas',   precio: 9500,  dibujo: 'tajada',    color: '#C8434F', etiqueta: 'Favorito', desc: 'Bizcocho rojo con frosting de queso crema.' },
+  { nombre: 'Tajada de chocolate',      categoria: 'Tortas',   precio: 9000,  dibujo: 'tajada',    color: '#6B3E2E', etiqueta: '',         desc: 'Tres capas de chocolate con ganache.' },
+  { nombre: 'Tajada de zanahoria',      categoria: 'Tortas',   precio: 8500,  dibujo: 'tajada',    color: '#E59A4E', etiqueta: '',         desc: 'Con nueces, canela y crema de queso.' },
+  { nombre: 'Cupcake de fresa',         categoria: 'Cupcakes', precio: 6000,  dibujo: 'cupcake',   color: '#F7A8B5', etiqueta: 'Nuevo',    desc: 'Vainilla con crema de fresa natural.' },
+  { nombre: 'Cupcake de pistacho',      categoria: 'Cupcakes', precio: 6500,  dibujo: 'cupcake',   color: '#A9D3A9', etiqueta: '',         desc: 'Crema de pistacho y trozos tostados.' },
+  { nombre: 'Galleta chips',            categoria: 'Galletas', precio: 4500,  dibujo: 'galleta',   color: '#D9A266', etiqueta: '',         desc: 'Crujiente por fuera, suave por dentro.' },
+  { nombre: 'Macarons x6',              categoria: 'Galletas', precio: 18000, dibujo: 'macaron',   color: '#C9B6E4', etiqueta: 'Caja',     desc: 'Seis sabores surtidos de temporada.' },
+  { nombre: 'Cheesecake de maracuyá',   categoria: 'Postres',  precio: 10500, dibujo: 'tajada',    color: '#F2C94C', etiqueta: '',         desc: 'Base de galleta y salsa de maracuyá.' },
+  { nombre: 'Croissant de mantequilla', categoria: 'Panes',    precio: 5500,  dibujo: 'croissant', color: '#E8B26A', etiqueta: '',         desc: 'Laminado a mano, horneado al amanecer.' },
+  { nombre: 'Pan de masa madre',        categoria: 'Panes',    precio: 14000, dibujo: 'pan',       color: '#C98B52', etiqueta: '',         desc: 'Fermentación de 24 horas.' }
+];
+
+const TORTA = {
+  tamano:     [['6 porciones', 55000, 2], ['12 porciones', 95000, 3], ['20 porciones', 145000, 3], ['30 porciones', 205000, 4]],
+  bizcocho:   [['Vainilla', 0, '#F5DDA8'], ['Chocolate', 5000, '#6B3E2E'], ['Red velvet', 8000, '#B8343F'], ['Zanahoria', 6000, '#D98A45']],
+  relleno:    [['Arequipe', 0, '#C7874A'], ['Frutos rojos', 6000, '#C2334E'], ['Crema de queso', 5000, '#FFF4E4'], ['Nutella', 9000, '#5A3326']],
+  cobertura:  [['Crema blanca', 0, '#FFFBF4'], ['Fresa', 4000, '#F7A8B5'], ['Pistacho', 6000, '#B7D9B2'], ['Ganache', 7000, '#4A2C24']],
+  decoracion: [['Sin decoración', 0, 'nada'], ['Fresas', 8000, 'fresas'], ['Chispas', 4000, 'chispas'], ['Flores', 12000, 'flores']]
+};
+
+/* ========================================================= */
+
+const $ = id => document.getElementById(id);
+const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const cop = n => '$' + Math.round(n).toLocaleString('es-CO');
+const wa = t => `https://wa.me/${encodeURIComponent(WHATSAPP)}?text=${encodeURIComponent(t)}`;
+const T = 'stroke="#4A2C24" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"';
+
+const DIB = {
+  tajada:    c => `<svg viewBox="0 0 200 170"><path d="M185 48 L185 140 L170 130 L170 30Z" fill="${c}" ${T}/><path d="M20 70 L170 30 L170 130 L20 150Z" fill="${c}" ${T}/><path d="M20 106 L170 79" stroke="#FFF6EC" stroke-width="10"/><path d="M20 70 L170 30 L185 48 L35 92Z" fill="#FFF6EC" ${T}/><circle cx="120" cy="36" r="10" fill="#F07A8E" ${T} stroke-width="3.5"/></svg>`,
+  cupcake:   c => `<svg viewBox="0 0 200 200"><path d="M50 110 L150 110 L136 185 L64 185Z" fill="#F2B84B" ${T}/><path d="M78 110 L82 185 M100 110 V185 M122 110 L118 185" ${T} stroke-width="3"/><path d="M40 112c-8-30 18-44 30-40 0-24 22-36 40-26 16-12 44 0 40 24 20 2 28 24 12 42Z" fill="${c}" ${T}/><circle cx="100" cy="38" r="12" fill="#F07A8E" ${T} stroke-width="4"/></svg>`,
+  galleta:   c => `<svg viewBox="0 0 200 200"><circle cx="100" cy="100" r="72" fill="${c}" ${T}/><g fill="#4A2C24"><circle cx="78" cy="76" r="9"/><circle cx="120" cy="70" r="7"/><circle cx="130" cy="112" r="10"/><circle cx="86" cy="124" r="8"/><circle cx="108" cy="146" r="6"/><circle cx="62" cy="104" r="6"/></g></svg>`,
+  macaron:   c => `<svg viewBox="0 0 200 200"><path d="M36 88c0-30 128-30 128 0v6H36Z" fill="${c}" ${T}/><rect x="40" y="94" width="120" height="16" rx="8" fill="#FFF6EC" ${T}/><path d="M36 116v-6h128v6c0 30-128 30-128 0Z" fill="${c}" ${T}/></svg>`,
+  croissant: c => `<svg viewBox="0 0 200 200"><path d="M20 128c10-40 40-66 80-66s70 26 80 66c-18-6-30 0-40-10-10 14-26 16-40 8-14 8-30 6-40-8-10 10-22 4-40 10Z" fill="${c}" ${T}/><path d="M64 76c6 18 8 34 6 48M100 62v54M136 76c-6 18-8 34-6 48" fill="none" ${T} stroke-width="3.5"/></svg>`,
+  pan:       c => `<svg viewBox="0 0 200 200"><ellipse cx="100" cy="112" rx="80" ry="54" fill="${c}" ${T}/><path d="M58 92c14 14 22 30 24 48M96 80c10 18 14 38 12 58M132 88c8 14 10 30 8 44" fill="none" stroke="#FFF1DC" stroke-width="7" stroke-linecap="round"/></svg>`
+};
+const dib = (tipo, c) => (DIB[tipo] || DIB.cupcake)(c);
+const tono = hex => { const n = parseInt(hex.slice(1),16), r=n>>16, g=(n>>8)&255, b=n&255, m=(v,t)=>Math.round(v+(t-v)*.8); return `rgb(${m(r,255)},${m(g,246)},${m(b,236)})`; };
+const oscuro = hex => { const n = parseInt(hex.slice(1),16); return ((n>>16)*299 + ((n>>8)&255)*587 + (n&255)*114) / 1000 < 120; };
+
+document.querySelectorAll('.n-rep').forEach(e => e.textContent = REPOSTERIA);
+$('n-marca').textContent = REPOSTERIA;
+$('anio').textContent = new Date().getFullYear();
+$('dir').textContent = DIRECCION;
+$('anticip').textContent = `Domicilios en la ciudad. Tortas por encargo con ${DIAS_ANTICIPACION} días de anticipación.`;
+$('horario').innerHTML = HORARIO.map(h => `<li><span>${esc(h[0])}</span><b>${esc(h[1])}</b></li>`).join('');
+$('wa-esp').href = wa(`Hola ${REPOSTERIA}, quiero cotizar un pedido especial.`);
+
+let g = 'M0 0H1440V6';
+for (let x = 1440; x > 0; x -= 48) { const l = [10, 18, 12, 22, 8][(x / 48) % 5 | 0]; g += `C${x - 8} 6 ${x - 10} ${6 + l} ${x - 24} ${6 + l}S${x - 40} 6 ${x - 48} 6`; }
+$('gotas').setAttribute('d', g + 'V0Z');
+
+const escena = [['galleta','#D9A266','8%','8%','26%','10deg'],['macaron','#C9B6E4','58%','12%','26%','-6deg'],['cupcake','#F7A8B5','10%','40%','34%','-8deg'],['tajada','#C8434F','48%','46%','42%','6deg']];
+$('escena').insertAdjacentHTML('beforeend', escena.map(([d,c,l,t,w,r]) => `<div class="flota" style="left:${l};top:${t};width:${w};--r:${r}">${dib(d, c)}</div>`).join(''));
+
+let cat = 'Todo';
+$('tabs').innerHTML = ['Todo', ...CATEGORIAS].map(c => `<button class="tab${c === 'Todo' ? ' on' : ''}" type="button" data-c="${esc(c)}">${esc(c)}</button>`).join('');
+$('tabs').addEventListener('click', e => { const b = e.target.closest('.tab'); if (!b) return; cat = b.dataset.c; [...$('tabs').children].forEach(x => x.classList.toggle('on', x === b)); pintar(); });
+function pintar(){
+  $('prods').innerHTML = PRODUCTOS.map((p, i) => ({ ...p, i })).filter(p => cat === 'Todo' || p.categoria === cat).map((p, k) => `
+    <article class="prod" style="animation-delay:${k * 50}ms">
+      <div class="ilu" style="background:${tono(p.color)}">${dib(p.dibujo, p.color)}${p.etiqueta ? `<span class="eti">${esc(p.etiqueta)}</span>` : ''}</div>
+      <h3>${esc(p.nombre)}</h3><p>${esc(p.desc)}</p>
+      <div class="pie-prod"><b>${cop(p.precio)}</b><button class="mas" type="button" data-i="${p.i}" aria-label="Agregar ${esc(p.nombre)}">+</button></div>
+    </article>`).join('');
+}
+pintar();
+
+const caja = [];
+$('prods').addEventListener('click', e => {
+  const b = e.target.closest('.mas'); if (!b) return;
+  const i = +b.dataset.i, ya = caja.find(x => x.tipo === 'p' && x.i === i);
+  if (ya) ya.n++; else caja.push({ tipo: 'p', i, n: 1 });
+  b.classList.add('ok'); b.textContent = '✓'; setTimeout(() => { b.classList.remove('ok'); b.textContent = '+'; }, 900);
+  pintarCaja();
+});
+const precioItem = x => (x.tipo === 'p' ? PRODUCTOS[x.i].precio : x.precio) * x.n;
+function pintarCaja(){
+  $('cuenta').textContent = caja.reduce((a, x) => a + x.n, 0);
+  $('cj-lista').innerHTML = !caja.length ? '<div class="vacia">Tu caja está vacía.<br>Agrega algo de la vitrina o arma tu torta.</div>' :
+    caja.map((x, k) => {
+      const p = x.tipo === 'p' ? PRODUCTOS[x.i] : null;
+      const col = p ? p.color : x.color;
+      return `<div class="it"><div class="mini" style="background:${tono(col)}">${dib(p ? p.dibujo : 'tajada', col)}</div>
+        <div><b>${esc(p ? p.nombre : 'Torta personalizada')}</b><small>${esc(p ? p.categoria : x.resumen)}</small><br><small>${cop(precioItem(x))}</small></div>
+        <div class="cant"><button type="button" data-m="${k}" aria-label="Quitar">−</button><span>${x.n}</span><button type="button" data-p="${k}" aria-label="Agregar">+</button></div></div>`;
+    }).join('');
+  $('cj-tot').textContent = cop(caja.reduce((a, x) => a + precioItem(x), 0));
+  $('cj-pedir').style.opacity = caja.length ? 1 : .5;
+}
+$('cj-lista').addEventListener('click', e => {
+  const b = e.target.closest('button'); if (!b) return;
+  if (b.dataset.p !== undefined) caja[+b.dataset.p].n++;
+  if (b.dataset.m !== undefined) { const k = +b.dataset.m; if (--caja[k].n <= 0) caja.splice(k, 1); }
+  pintarCaja();
+});
+const abrirCaja = () => { $('caja').classList.add('on'); $('velo').classList.add('on'); document.body.style.overflow = 'hidden'; };
+const cerrarCaja = () => { $('caja').classList.remove('on'); $('velo').classList.remove('on'); document.body.style.overflow = ''; };
+$('abrir-caja').onclick = abrirCaja; $('cj-x').onclick = cerrarCaja; $('velo').onclick = cerrarCaja;
+addEventListener('keydown', e => { if (e.key === 'Escape') cerrarCaja(); });
+$('cj-pedir').onclick = () => {
+  if (!caja.length) return;
+  const l = caja.map(x => x.tipo === 'p' ? `• ${x.n} x ${PRODUCTOS[x.i].nombre} — ${cop(precioItem(x))}` : `• ${x.n} x Torta personalizada (${x.resumen}) — ${cop(precioItem(x))}`);
+  open(wa(`Hola ${REPOSTERIA}, quiero hacer este pedido:\n\n${l.join('\n')}\n\nTotal: ${cop(caja.reduce((a, x) => a + precioItem(x), 0))}`), '_blank');
+};
+pintarCaja();
+
+const sel = { tamano: 1, bizcocho: 1, relleno: 0, cobertura: 0, decoracion: 1 };
+const GRUPOS = [['tamano','Tamaño'],['bizcocho','Bizcocho'],['relleno','Relleno'],['cobertura','Cobertura'],['decoracion','Decoración']];
+const hoy = new Date(); hoy.setDate(hoy.getDate() + DIAS_ANTICIPACION);
+const iso = `${hoy.getFullYear()}-${String(hoy.getMonth() + 1).padStart(2,'0')}-${String(hoy.getDate()).padStart(2,'0')}`;
+$('opciones').innerHTML = GRUPOS.map(([k, t], n) => `<div class="grupo"><h3><span>${n + 1}</span>${t}</h3><div class="chips" data-g="${k}">${
+  TORTA[k].map((o, i) => `<button class="chip${sel[k] === i ? ' on' : ''}" type="button" data-i="${i}">${k === 'tamano' || k === 'decoracion' ? '' : `<i style="background:${o[2]}"></i>`}${esc(o[0])} <small>${k === 'tamano' ? cop(o[1]) : (o[1] ? '+' + cop(o[1]) : '')}</small></button>`).join('')
+}</div></div>`).join('') + `
+  <div class="grupo"><h3><span>6</span>Mensaje y entrega</h3>
+    <div class="campo"><input id="t-msg" maxlength="24" placeholder="Mensaje en la torta (opcional)"></div>
+    <div class="campo" style="margin-top:10px"><input id="t-fecha" type="date" min="${iso}" value="${iso}" aria-label="Fecha de entrega"></div>
+    <p class="nota">Las tortas se encargan con mínimo ${DIAS_ANTICIPACION} días de anticipación.</p></div>
+  <div class="dos-btn"><button class="btn claro" id="t-caja" type="button">Agregar a mi caja</button><button class="btn fresa" id="t-wa" type="button">Pedir ya</button></div>`;
+$('opciones').addEventListener('click', e => {
+  const b = e.target.closest('.chip'); if (!b) return;
+  sel[b.parentElement.dataset.g] = +b.dataset.i;
+  [...b.parentElement.children].forEach(x => x.classList.toggle('on', x === b));
+  dibujarTorta();
+});
+$('opciones').addEventListener('input', e => { if (e.target.id === 't-msg') dibujarTorta(); });
+
+const precioTorta = () => GRUPOS.reduce((a, [k]) => a + TORTA[k][sel[k]][1], 0);
+const resumenTorta = () => `${TORTA.tamano[sel.tamano][0]}, bizcocho de ${TORTA.bizcocho[sel.bizcocho][0].toLowerCase()} con ${TORTA.relleno[sel.relleno][0].toLowerCase()}, cobertura ${TORTA.cobertura[sel.cobertura][0].toLowerCase()}, ${TORTA.decoracion[sel.decoracion][0].toLowerCase()}`;
+
+function dibujarTorta(){
+  const pisos = TORTA.tamano[sel.tamano][2];
+  const biz = TORTA.bizcocho[sel.bizcocho][2], rel = TORTA.relleno[sel.relleno][2], cob = TORTA.cobertura[sel.cobertura][2], deco = TORTA.decoracion[sel.decoracion][2];
+  const W = [220, 250, 280, 300][sel.tamano], alto = [52, 44, 50, 40][sel.tamano], sep = 10, base = 300, x = 200 - W / 2;
+  const topY = base - pisos * alto - (pisos - 1) * sep;
+  let s = `<ellipse cx="200" cy="${base + 20}" rx="${W / 2 + 44}" ry="14" fill="#FBD3D9" stroke="#4A2C24" stroke-width="4"/>`;
+  s += `<rect x="${x - 20}" y="${base}" width="${W + 40}" height="14" rx="7" fill="#FFFFFF" stroke="#4A2C24" stroke-width="4"/>`;
+  for (let i = 0; i < pisos; i++) {
+    const y = base - (i + 1) * alto - i * sep;
+    s += `<rect x="${x}" y="${y}" width="${W}" height="${alto}" fill="${biz}" stroke="#4A2C24" stroke-width="4"/>`;
+    if (i < pisos - 1) s += `<rect x="${x}" y="${y - sep}" width="${W}" height="${sep}" fill="${rel}" stroke="#4A2C24" stroke-width="4"/>`;
+  }
+  const n = Math.round(W / 28), paso = W / n;
+  let d = `M${x - 6} ${topY + 4} Q${x - 6} ${topY - 14} ${x + 14} ${topY - 14} H${x + W - 14} Q${x + W + 6} ${topY - 14} ${x + W + 6} ${topY + 4} L${x + W} ${topY + 14}`;
+  for (let i = n - 1; i >= 0; i--) {
+    const a = x + paso * (i + 1), b = x + paso * i, m = (a + b) / 2, largo = [14, 30, 20, 38, 12][i % 5];
+    d += ` L${a - 3} ${topY + 14} C${a - 3} ${topY + 14 + largo} ${b + 3} ${topY + 14 + largo} ${b + 3} ${topY + 14}`;
+  }
+  d += ` L${x} ${topY + 14} Z`;
+  s += `<path d="${d}" fill="${cob}" stroke="#4A2C24" stroke-width="4" stroke-linejoin="round"/>`;
+  if (deco === 'fresas') for (let i = 0; i < 5; i++) { const cx = x + 26 + i * (W - 52) / 4; s += `<path d="M${cx - 12} ${topY - 14} q12 -28 24 0 q-12 16 -24 0Z" fill="#E0445E" stroke="#4A2C24" stroke-width="3.5"/><path d="M${cx - 7} ${topY - 30} l7 7 7 -7" fill="none" stroke="#6BA46F" stroke-width="4" stroke-linecap="round"/>`; }
+  if (deco === 'chispas') { const cs = ['#F07A8E','#F2B84B','#6BA46F','#8FB8E8','#9B7BD0']; for (let i = 0; i < 24; i++) { const cx = x + 14 + ((i * 53) % (W - 28)), cy = topY - 12 + ((i * 17) % 20); s += `<rect x="${cx}" y="${cy}" width="11" height="4" rx="2" fill="${cs[i % 5]}" transform="rotate(${(i * 47) % 180} ${cx + 5} ${cy + 2})"/>`; } }
+  if (deco === 'flores') for (let i = 0; i < 3; i++) { const cx = x + W / 2 + (i - 1) * 62, cy = topY - 22; s += [0, 72, 144, 216, 288].map(r => `<ellipse cx="${cx}" cy="${cy - 11}" rx="8" ry="12" fill="${i === 1 ? '#F7A8B5' : '#FFFFFF'}" stroke="#4A2C24" stroke-width="3" transform="rotate(${r} ${cx} ${cy})"/>`).join('') + `<circle cx="${cx}" cy="${cy}" r="7" fill="#F2B84B" stroke="#4A2C24" stroke-width="3"/>`; }
+  const msg = ($('t-msg') && $('t-msg').value.trim()) || '';
+  if (msg) s += `<text x="200" y="${base - alto / 2 + 7}" text-anchor="middle" font-family="Young Serif, Georgia, serif" font-size="${Math.max(13, Math.min(22, 330 / msg.length))}" fill="${oscuro(biz) ? '#FFF6EC' : '#4A2C24'}">${esc(msg)}</text>`;
+  $('torta').innerHTML = s;
+  $('t-total').textContent = cop(precioTorta());
+  $('t-det').textContent = resumenTorta();
+}
+dibujarTorta();
+
+function datosTorta(){ const f = $('t-fecha').value, msg = $('t-msg').value.trim();
+  return { resumen: resumenTorta() + (msg ? `, mensaje "${msg}"` : '') + (f ? `, entrega ${f.split('-').reverse().join('/')}` : ''), precio: precioTorta() }; }
+$('t-caja').onclick = () => { const d = datosTorta(); caja.push({ tipo: 't', n: 1, precio: d.precio, resumen: d.resumen, color: TORTA.bizcocho[sel.bizcocho][2] }); pintarCaja(); abrirCaja(); };
+$('t-wa').onclick = () => { const d = datosTorta(); open(wa(`Hola ${REPOSTERIA}, quiero encargar esta torta:\n\n${d.resumen}\n\nPrecio: ${cop(d.precio)}`), '_blank'); };
+
+const io = new IntersectionObserver(es => es.forEach((en, k) => { if (en.isIntersecting) { setTimeout(() => en.target.classList.add('on'), k * 80); io.unobserve(en.target); } }), { threshold: .12, rootMargin: '0px 0px -40px' });
+document.querySelectorAll('.rv').forEach(el => io.observe(el));
+const menu = $('menu'), burger = $('burger');
+burger.onclick = () => { const o = menu.classList.toggle('on'); burger.setAttribute('aria-expanded', o); };
+menu.addEventListener('click', e => { if (e.target.tagName === 'A') { menu.classList.remove('on'); burger.setAttribute('aria-expanded', false); } });
+</script>
+</body>
+</html>
